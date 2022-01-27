@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const { isEmail } = require('validator');
 
-const UserSchema = new Schema({
+const ProviderSchema = new Schema({
     name_1:{
         type: String,
         required: [true, 'Please enter Valid Name for the Provider you are creating'],
@@ -41,16 +41,19 @@ const UserSchema = new Schema({
     },
    city:{
         type: String,
-        required: false,
+        required: [true, 'Required field city'],
         maxlength:[255]      
     },
     country:{
         type: String,
-        required: false,
+        required: [true, 'Required field country'],
         maxlength:[255]      
     },
-    
-    
+    fiscal_id:{
+        type: String,
+        required: [true, 'Required field country'],
+        maxlength:[255]      
+    },    
     created_at:{
         type: Date,
         default: Date.now
@@ -64,3 +67,4 @@ const UserSchema = new Schema({
 
 
 })
+module.exports = Provider = mongoose.model('provider',ProviderSchema);

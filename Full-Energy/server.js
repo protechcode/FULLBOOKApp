@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const path = require ('path)');
+const path = require ('path');
 const config = require('config');
 const cors= require('cors');
 
@@ -24,8 +24,9 @@ res.sendFile(path.resolve(__dirname,'client','build','index.html'));
 const port = process.env.PORT || 4000;
 //Mongoose Set-Up
 const dbURI = config.get('dbURI');
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true })
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
 
-  .then((result) => app.listen(port))
+  .then((result) => {app.listen(port); console.log("Express App served on: port 4000", )})
+
   .catch((err) => console.log(err));
 //End of Mongoose Set-up
