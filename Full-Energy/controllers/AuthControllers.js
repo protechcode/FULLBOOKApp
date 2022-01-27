@@ -2,9 +2,16 @@ const User = require('../models/User_model');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const bcrypt = require('bcrypt');
+const { model } = require('mongoose');
+
+module.exports.hello = (req,res) => {
+
+    res.send("hello");
+}
 
 module.exports.signup = (req,res) => {
     const { name, email, password } = req.body;
+
 
     if(!name || !email || !password){
         res.status(400).json({msg: 'Please enter all fields'});
@@ -45,7 +52,7 @@ module.exports.signup = (req,res) => {
     })
 }
 
-module.exports.login = async (req,res) => {
+module.exports.login = (req,res) => {
     const { email, password } = req.body;
     if(!email || !password){
         res.status(400).json({msg: 'Please enter all fields'});

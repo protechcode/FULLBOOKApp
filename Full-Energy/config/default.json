@@ -6,5 +6,7 @@
     "userName3":"mario",
     "password_userName3":"mario",
     "dbURI_Example":"mongodb+srv://<username1>:<password_userName1>@cluster0.a36mj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-    "dbURI":"mongodb+srv://cristian:cristian@cluster0.a36mj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+    "dbURI":"mongodb+srv://cristian:cristian@cluster0.a36mj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "jwtsecret": "your jwt secret"
+
 }

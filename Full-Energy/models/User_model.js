@@ -10,7 +10,7 @@ const UserSchema = new Schema({
     },
     surname:{
         type: String,
-        required: [true, 'Please enter Valid Name for the user you are creating'],        
+        required: [true, 'Please enter Valid Surname for the user you are creating'],        
     },
     email:{
         type: String,
