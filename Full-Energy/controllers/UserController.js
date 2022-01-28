@@ -1,5 +1,7 @@
 const User = require('../models/User_model');
 
+
+////////////////Admin//////////////////////////////////////
 module.exports.get_users = (req,res) => {
     User.find().sort({date:-1}).then(users => res.json(users));
 }

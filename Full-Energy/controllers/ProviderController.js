@@ -1,5 +1,6 @@
 const Provider = require('../models/Provider_model');
 
+///////////////Admin////////////////////////////////
 module.exports.get_providers = (req,res) => {
     Provider.find().sort({date:-1}).then(providers => res.json(providers));
 }

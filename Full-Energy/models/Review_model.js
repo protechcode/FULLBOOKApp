@@ -5,9 +5,13 @@ const { isEmail } = require('validator');
 const ReviewSchema = new Schema({
 
         
-    product_id:{
+    item_id:{
         type: String,
         required:[true, 'No Item Id']
+    },
+    user_id:{
+        type: String,
+        required:[true, 'No Item Id']  
     },
     parent_id:{
         type: String,
@@ -18,7 +22,7 @@ const ReviewSchema = new Schema({
         required:[true, 'No title']
     },
     rating:{
-        type: number,
+        type: Number,
         required:[true, 'No title'],
         deafult: 5
     },

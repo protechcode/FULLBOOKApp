@@ -11,6 +11,7 @@ const orderRoutes = require('./routes/Order_route');
 const userRoutes = require('./routes/User_route');
 const providerRoutes = require('./routes/Provider_route');
 const categoryRoutes = require('./routes/Category_route');
+const reviewRoutes = require('./routes/Review_route');
 
 
 const app = express();
@@ -24,6 +25,7 @@ app.use('/api',orderRoutes);
 app.use('/api',userRoutes);
 app.use('/api',providerRoutes);
 app.use('/api',categoryRoutes);
+app.use('/api',reviewRoutes);
 
 
 if(process.env.NODE_ENV === 'production') {
