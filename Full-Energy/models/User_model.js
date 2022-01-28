@@ -10,7 +10,7 @@ const UserSchema = new Schema({
     },
     surname:{
         type: String,
-        required: [true, 'Please enter Valid Surname for the user you are creating'],        
+        //required: [true, 'Please enter Valid Surname for the user you are creating'],        
     },
     email:{
         type: String,
@@ -36,7 +36,7 @@ const UserSchema = new Schema({
     },
     address_2:{
         type: String,
-        required: false,
+        //required: false,
         maxlength:[255]      
     },
     is_admin:{
