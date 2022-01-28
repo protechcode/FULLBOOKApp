@@ -6,16 +6,16 @@ const cors= require('cors');
 
 const authRoutes = require('./routes/Auth_route');
 const itemRoutes = require('./routes/Item_route');
-//const cartRoutes = require('./routes/Cart_route');
-//const orderRoutes = require('./routes/Order_route');
+const cartRoutes = require('./routes/Cart_route');
+const orderRoutes = require('./routes/Order_route');
 
 const app = express();
 app.use(express.json());
 
 app.use('/api',authRoutes);
 app.use('/api',itemRoutes);
-//app.use('/api',cartRoutes);
-//app.use('/api',orderRoutes);
+app.use('/api',cartRoutes);
+app.use('/api',orderRoutes);
 
 if(process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
