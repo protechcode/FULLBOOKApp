@@ -10,10 +10,12 @@ const cartRoutes = require('./routes/Cart_route');
 const orderRoutes = require('./routes/Order_route');
 const userRoutes = require('./routes/User_route');
 const providerRoutes = require('./routes/Provider_route');
+const categoryRoutes = require('./routes/Category_route');
 
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 app.use('/api',authRoutes);
 app.use('/api',itemRoutes);
@@ -21,6 +23,7 @@ app.use('/api',cartRoutes);
 app.use('/api',orderRoutes);
 app.use('/api',userRoutes);
 app.use('/api',providerRoutes);
+app.use('/api',categoryRoutes);
 
 
 if(process.env.NODE_ENV === 'production') {
