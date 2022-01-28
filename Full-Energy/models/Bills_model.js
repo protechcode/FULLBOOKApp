@@ -10,8 +10,9 @@ const BillSchema = new Schema({
         required:[true, 'Please provide a date for the Bill']
     },
     due_date:{
-        type: Date,
-        required:[true, 'Please provide a date for the Bill']
+        type: String,
+        required:[true, 'Please provide a date for the Bill'],
+        default: Date.now + " +30 working days",
     },
     updated_at:{
         type: Date,
@@ -19,7 +20,8 @@ const BillSchema = new Schema({
     },
     status:{
         type: String,
-        required: [true, ' Please provide the status "Unpaid, Processing or Paid are valid"']
+        required: [true, ' Please provide the status "Unpaid, Processing or Paid are valid"'],
+        default: "Unpaid"
     },
     is_paid:{
         type: Boolean,
@@ -28,14 +30,17 @@ const BillSchema = new Schema({
     subtotal:{
         type: Number,
         required:[true, 'Insert a Valid number'],
+        default:0
     },
     total:{
         type: Number,
         required:[true, 'Insert a Valid number'],
+        default:0
     },
     bill_origin_id:{
         type: String,
         required:[true, 'Insert the identification for the bill, else will not be saved'],
+        default:"0"
     }
 
 
