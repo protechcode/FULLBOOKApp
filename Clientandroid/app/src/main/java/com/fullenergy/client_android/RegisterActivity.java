@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -39,45 +40,8 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 checkDataEntered();
+                Log.i("Register Says", nameBox.getText().toString() + "  " + emailBox.getText().toString() + "  " + passwordBox.getText().toString());
             }
-
-           public void checkDataEntered() {
-               if(isEmail(emailBox) == false){
-                   emailBox.setError("Enter a Valid Email!");
-                   /*Toast message = Toast.makeText(RegisterActivity.this, "You must Enter a valid email", Toast.LENGTH_SHORT);
-                    message.show();*/
-               }
-                if(isEmpty(nameBox) ==false){
-                    nameBox.setError("Name Required!");
-                    /*Toast message = Toast.makeText(RegisterActivity.this, "You must Enter Your name", Toast.LENGTH_SHORT);
-                    message.show();*/
-                }
-
-                if(isEmpty(passwordBox) == false ){
-
-                    passwordBox.setError("Password Required!");
-                    /*Toast message = Toast.makeText(RegisterActivity.this, "You must Enter a Secure Password containing at least 6 characters", Toast.LENGTH_SHORT);
-                    message.show();*/
-                }else if(passwordBox.getText().toString().length() < 6){
-                    Toast message = Toast.makeText(RegisterActivity.this, "You must Enter a Secure Password containing at least 6 characters", Toast.LENGTH_SHORT);
-                    message.show();
-                }
-
-            }
-            public boolean isEmpty(EditText text){
-                CharSequence stringValueOfBox = text.toString();
-                return TextUtils.isEmpty(stringValueOfBox);
-            }
-            public boolean isEmail(EditText text){
-                CharSequence email = text.getText().toString();
-                return (!TextUtils.isEmpty(email)&& Patterns.EMAIL_ADDRESS.matcher(email).matches());
-            }
-
-
-
-
-
-
 
         });
         //go back to Login Activity
@@ -120,7 +84,46 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
         }
+    public boolean isEmpty(EditText text){
+        CharSequence stringValueOfBox = text.getText().toString();
+        return TextUtils.isEmpty(stringValueOfBox);
+    }
+    public boolean isEmail(EditText text){
+        CharSequence email = text.getText().toString();
+        return (!TextUtils.isEmpty(email)&& Patterns.EMAIL_ADDRESS.matcher(email).matches());
+    }
+    public void checkDataEntered() {
+
+        if(isEmail(emailBox) == false){
+            emailBox.setError("Enter a Valid Email!");
+                   /*Toast message = Toast.makeText(RegisterActivity.this, "You must Enter a valid email", Toast.LENGTH_SHORT);
+                    message.show();*/
+        }
+        if(isEmpty(nameBox)){
+            nameBox.setError("Name Required!");
+                    /*Toast message = Toast.makeText(RegisterActivity.this, "You must Enter Your name", Toast.LENGTH_SHORT);
+                    message.show();*/
+        }
+
+        if(isEmpty(passwordBox)){
+
+            passwordBox.setError("Password Required!");
+            Toast message = Toast.makeText(RegisterActivity.this, "You must Enter a Secure Password it's empty", Toast.LENGTH_SHORT);
+            message.show();
+        }/*else if(passwordBox.getText().toString().length() < 6){
+            Toast message = Toast.makeText(RegisterActivity.this, "You must Enter a Secure Password containing at least 6 characters", Toast.LENGTH_SHORT);
+            message.show();
+        }*/
+
+
+
 
 
 
     }
+
+
+
+
+
+}
