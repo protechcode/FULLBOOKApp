@@ -4,13 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
+    public EditText nameBox;
+    public EditText emailBox;
+    public EditText passwordBox;
     public Button Button_1;
     public Button Button_2;
     public Button Button_3;
@@ -19,8 +27,60 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        //go back to Login Activity
+        nameBox = (EditText) findViewById(R.id.register_name);
+        emailBox = (EditText) findViewById(R.id.register_email);
+        passwordBox = (EditText) findViewById(R.id.register_password);
+        Button_1 = (Button) findViewById(R.id.register_button_1);
         Button_2 = (Button) findViewById(R.id.register_button_2);
+        Button_3 = (Button) findViewById(R.id.register_button_3);
+        //Register action
+        Button_1.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                checkDataEntered();
+            }
+
+           public void checkDataEntered() {
+               if(isEmail(emailBox) == false){
+                   emailBox.setError("Enter a Valid Email!");
+                   /*Toast message = Toast.makeText(RegisterActivity.this, "You must Enter a valid email", Toast.LENGTH_SHORT);
+                    message.show();*/
+               }
+                if(isEmpty(nameBox) ==false){
+                    nameBox.setError("Name Required!");
+                    /*Toast message = Toast.makeText(RegisterActivity.this, "You must Enter Your name", Toast.LENGTH_SHORT);
+                    message.show();*/
+                }
+
+                if(isEmpty(passwordBox) == false ){
+
+                    passwordBox.setError("Password Required!");
+                    /*Toast message = Toast.makeText(RegisterActivity.this, "You must Enter a Secure Password containing at least 6 characters", Toast.LENGTH_SHORT);
+                    message.show();*/
+                }else if(passwordBox.getText().toString().length() < 6){
+                    Toast message = Toast.makeText(RegisterActivity.this, "You must Enter a Secure Password containing at least 6 characters", Toast.LENGTH_SHORT);
+                    message.show();
+                }
+
+            }
+            public boolean isEmpty(EditText text){
+                CharSequence stringValueOfBox = text.toString();
+                return TextUtils.isEmpty(stringValueOfBox);
+            }
+            public boolean isEmail(EditText text){
+                CharSequence email = text.getText().toString();
+                return (!TextUtils.isEmpty(email)&& Patterns.EMAIL_ADDRESS.matcher(email).matches());
+            }
+
+
+
+
+
+
+
+        });
+        //go back to Login Activity
         Button_2.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
         //go back to Main Activity
-        Button_3 = (Button) findViewById(R.id.register_button_3);
+
         Button_3.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
