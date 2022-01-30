@@ -38,6 +38,7 @@ import okio.BufferedSink;
 public class RegisterActivity extends AppCompatActivity {
     //BASE URL For Requests
     private static final String BASE_URL = "http://192.168.1.51:4000/api";
+
     //Declaration of UI elements
     public EditText nameBox;
     public EditText emailBox;
@@ -46,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
     public Button Button_2;
     public Button Button_3;
 
-    //and client(okHttp) for sending requests
+    //Declaration of client(okHttp) for sending requests
     private OkHttpClient httpClient;
 
     //onCreate method
@@ -103,47 +104,46 @@ public class RegisterActivity extends AppCompatActivity {
     public void postDataToRegisterEndPoint()  throws IOException {
 
         httpClient = new OkHttpClient();
+
+        //Gson is a JSONParser (Needed for sending the request as JSON)
         Gson gson = new Gson();
+
+        //Preparing key-values
+
+        //Keys
         String key_name = "name";
         String key_email = "email";
         String key_password= "password";
+
+        //Values
         String value_name = nameBox.getText().toString();
         String value_email = emailBox.getText().toString();
         String value_password= passwordBox.getText().toString();
+
+        //We will use HashMap as equivalent to [{"key":"value"}]
         HashMap<String, String> data = new HashMap<String, String>();
         data.put(key_name, value_name);
         data.put(key_email, value_email);
         data.put(key_password, value_password);
 
 
-        MediaType
-                JSON = MediaType.parse("application/json");
-
-        Log.i("REQUEST FORMBODY:", String.valueOf(data));
+        //Declare a MediaType for okHttp RequestBody (Needs MediaType and a String)
+        MediaType JSON = MediaType.parse("application/json");
+        //Declare String for okHttp RequestBody (Needs MediaType and a String)
         String json = gson.toJson(data);
+        //okHttp RequestBody aka constructor
         RequestBody body = RequestBody.create(json,JSON);
-/*
-RequestBody formBody = new FormBody.Builder()
-                .add(String.valueOf(name), String.valueOf(nameBox) )
-                .add(String.valueOf(email), String.valueOf(emailBox))
-                .add(String.valueOf(password), String.valueOf(passwordBox))
-                .build();
 
-    Request request = new Request.Builder()
-      .url(BASE_URL + "/users")
-      .post(formBody)
-      .build();)*/
-
-
-
-
+        //okHttp Request Builder aka constructor
         Request request = new Request.Builder()
                 .url(BASE_URL + "/register")
                 .method("POST",body)
                 .addHeader("Content-Type", "application/json")
                 /*.post(formBody)*/
                 .build();
+        //okHttp Call to receive the response
         Call call = httpClient.newCall(request);
+        //Asynchronous Call method '.enqueue()' with 'Callbacks(onFailure(), onResponse())' [Equivalent to JS 'async () =>{fetch().then().catch()}' ];
         call.enqueue(new Callback() {
             @Override
             public void onFailure(final Call call, IOException e) {
@@ -169,11 +169,7 @@ RequestBody formBody = new FormBody.Builder()
                 // Do something with the response
             }
         });
-
-        /**/
-
-
-    }
+}
     //End of okHttp Request
 
     //Setters
