@@ -1,8 +1,5 @@
 package com.fullenergy.client_android;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,9 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
-import org.w3c.dom.Text;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -29,7 +27,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-
 public class LoginActivity extends AppCompatActivity {
     //BASE URL For Requests
     private static final String BASE_URL = "http://192.168.1.51:4000/api";
@@ -39,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     public Button Button_1;
     public Button Button_2;
     public Button Button_3;
+    StorageForClientCredentials localStorage;
 
     //Declaration of client(okHttp) for sending requests
     private OkHttpClient httpClient;
@@ -124,8 +122,11 @@ public class LoginActivity extends AppCompatActivity {
         call.enqueue(new Callback() {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                String res = response.body().string();
-                Log.i("Register.postData(): ", res);
+                String usrNTokn = response.body().string();
+                Gson gsonDecode = new Gson();
+                gsonDecode.toJson(usrNTokn);
+                Log.i("GSONDECODE:", gsonDecode.toJson(usrNTokn));
+
 
             }
 
