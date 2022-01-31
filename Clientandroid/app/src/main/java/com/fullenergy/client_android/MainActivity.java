@@ -20,6 +20,12 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
+    //BASE URL For Requests
+    UsefullStrings url = new UsefullStrings();
+    String BASE_URL = url.getURL();
+
+
+    //private static final String BASE_URL = "http://192.168.142.125:4000/api/";
     public TextView receiver;
     public Button Button_1;
     public Button Button_2;
@@ -28,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private void fetchData() {
 
         httpClient = new OkHttpClient.Builder().build();
-        String url = "http://192.168.1.51:4000/api";
+        String url = BASE_URL;
         Request request = new Request.Builder()
                 .url(url)
                 .method("GET", null)

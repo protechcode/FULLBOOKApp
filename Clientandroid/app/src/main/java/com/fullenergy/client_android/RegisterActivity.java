@@ -29,7 +29,7 @@ import okhttp3.Response;
 
 public class RegisterActivity extends AppCompatActivity {
     //BASE URL For Requests
-    private static final String BASE_URL = "http://192.168.1.51:4000/api";
+    private static final String BASE_URL = "http://192.168.142.125:4000/api";
 
     //Declaration of UI elements
     public EditText nameBox;

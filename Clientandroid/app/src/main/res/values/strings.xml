@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Client-android</string>
+    <string name="main_button_1_text">Go to Login!</string>
+    <string name="main_button_2_text">Go to Register!</string>
+    <string name="main_button_3_text">test connection</string>
+    <string name="register_button_1_text">Register for Free</string>
+    <string name="register_button_2_text">Go Back to Login!</string>
+    <string name="register_button_3_text">Main Activity</string>
+    <string name="register_name_hint">Name</string>
+    <string name="register_password_hint">******</string>
+    <string name="register_email_hint">Insert your Email</string>
+    <string name="login_emaiñ">Introduce your Email</string>
+    <string name="login_email_hint">Please insert Your Email!</string>
+    <string name="login_button_1_text">Log in to your Account</string>
+    <string name="login_password_2_hint">******</string>
+    <string name="login_button_2_text">Go to Register</string>
+    <string name="login_button_3_text">Main Activity</string>
 </resources>
