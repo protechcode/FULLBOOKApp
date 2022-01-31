@@ -28,7 +28,7 @@ module.exports.update_provider = (req,res) => {
 
 module.exports.delete_provider = (req,res) => {
     Provider.findByIdAndDelete({_id: req.params.id}).then(function(provider){
-        Provider.json({success: true});
+        res.json({success: true});
     });
 }
 /*
