@@ -54,7 +54,7 @@ const ItemSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    foudnd_at: {
+    found_at: {
         type: String,
         maxlength:[255, "Too many characters"]      
     },
@@ -63,6 +63,7 @@ const ItemSchema = new Schema({
     },
     size: {
         type:Array
+    
     },
 });
 
