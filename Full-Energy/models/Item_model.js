@@ -61,6 +61,9 @@ const ItemSchema = new Schema({
     provider_id:{
         type:String
     },
+    size: {
+        type:Array
+    },
 });
 
 module.exports = Item = mongoose.model('item',ItemSchema);

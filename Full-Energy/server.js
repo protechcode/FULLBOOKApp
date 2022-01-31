@@ -13,6 +13,8 @@ const providerRoutes = require('./routes/Provider_route');
 const categoryRoutes = require('./routes/Category_route');
 const reviewRoutes = require('./routes/Review_route');
 const billsRoutes = require('./routes/Bills_route');
+const sizeRoutes = require('./routes/Size_route');
+
 
 const app = express();
 app.use(express.json());
@@ -27,6 +29,7 @@ app.use('/api',providerRoutes);
 app.use('/api',categoryRoutes);
 app.use('/api',reviewRoutes);
 app.use('/api',billsRoutes);
+app.use('/api',sizeRoutes);
 
 
 if(process.env.NODE_ENV === 'production') {
