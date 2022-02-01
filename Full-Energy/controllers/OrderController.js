@@ -11,7 +11,7 @@ module.exports.hello = (req,res) => {
 module.exports.get_orders = async (req,res) =>
 {
     const userId = req.params.id;
-    Order.find({userId : userId}).sort({date:-1}).then(orders => res.json(orders));
+    Order.find({userId : userId}).sort({date:-1}).then(orders => res.json({length: orders.length, orders: orders}));
 }
 module.exports.checkout = async (req,res) =>{
     try{

@@ -1,10 +1,6 @@
 const Size = require('../models/Size_model');
 const Item = require('../models/Item_model');
-
-
-
 const config = require('config');
-
 
 module.exports.hello = (req,res) => {
 
@@ -14,7 +10,7 @@ module.exports.hello = (req,res) => {
 module.exports.get_sizes = async (req,res) =>
 {
     const itemId = req.params.id;
-    Size.find({item_id : itemId}).sort({date:-1}).then(sizes => res.json(sizes));
+    Size.find({item_id : itemId}).sort({date:-1}).then(sizes => res.json({sizes: sizes}));
 }
 
 

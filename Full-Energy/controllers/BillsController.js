@@ -7,7 +7,14 @@ module.exports.hello = (req,res) => {
 module.exports.get_bills = async (req,res) =>
 {
     
-    Bill.find().sort({date:-1}).then(bills => res.json(bills));
+    Bill.find().sort({date:-1}).then(bills => res.json({bills: bills}));
+}
+module.exports.get_bill = (req,res) => {
+    Bill.findById({_id: req.params.id},req).then(function(bill){
+        Bill.findOne({_id: req.params.id}).then(function(bill){
+            res.json(bill);
+        });
+    });
 }
 module.exports.post_bill = (req,res) => {
     const newBill = new Bill(req.body);

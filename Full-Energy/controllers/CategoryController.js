@@ -6,7 +6,7 @@ module.exports.hello = (req,res) => {
 }
 
 module.exports.get_categories = (req,res) => {
-    Category.find().sort({created_date:-1}).then(categories => res.json(categories));
+    Category.find().sort({created_date:-1}).then(categories => res.json({length: categories.length, categories: categories}));
 }
 
 module.exports.post_category = (req,res) => {

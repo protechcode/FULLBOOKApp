@@ -13,7 +13,7 @@ module.exports.hello = (req,res) => {
 module.exports.get_reviews = async (req,res) =>
 {
     const itemId = req.params.id;
-    Review.find({item_id : itemId}).sort({date:-1}).then(reviews => res.json(reviews));
+    Review.find({item_id : itemId}).sort({date:-1}).then(reviews => res.json({reviews: reviews}));
 }
 
 

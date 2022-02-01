@@ -13,7 +13,7 @@ module.exports.get_cart_items = async (req, res) => {
         let cart = await Cart.find({user_id: userId});
         
         if (cart && cart,items.length>0){
-            res.send(cart);
+            res.json({cart: cart});
         }
         else{
             res.send(null)

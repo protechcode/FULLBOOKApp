@@ -2,7 +2,7 @@ const Provider = require('../models/Provider_model');
 
 ///////////////Admin////////////////////////////////
 module.exports.get_providers = (req,res) => {
-    Provider.find().sort({date:-1}).then(providers => res.json(providers));
+    Provider.find().sort({date:-1}).then(providers => res.json({length: providers.length, providers: providers}));
 }
 
 module.exports.get_provider = (req,res) => {
