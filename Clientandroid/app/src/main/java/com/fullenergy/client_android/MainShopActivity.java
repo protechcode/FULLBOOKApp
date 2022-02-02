@@ -40,7 +40,9 @@ public class MainShopActivity extends AppCompatActivity {
     public class ProductClass {
         String URLi1mageOfItem;
         String title;
+        String price;
         String description;
+
         /**
          * String URL2imageOfItem;
          * String description;
@@ -54,6 +56,7 @@ public class MainShopActivity extends AppCompatActivity {
         ImageView card_image;
         TextView card_title;
         TextView card_description;
+        TextView card_price;
 
         public ProductViewHolder(View item_dot_xmlView) {
             super(item_dot_xmlView);
@@ -105,7 +108,8 @@ public class MainShopActivity extends AppCompatActivity {
                             JSONObject item = items.getJSONObject(i);
                             ProductClass product = new ProductClass();
                             product.title = item.getString("title");
-                            product.description = item.getString("description");
+                            product.price = item.getString("description");
+                            product.price = item.getString("price");
                             product.URLi1mageOfItem = item.getString("image_1");
                             products.add(product); // Add product to list
                         }
@@ -134,6 +138,7 @@ public class MainShopActivity extends AppCompatActivity {
                                     vh.card_image = (ImageView) vh.itemView.findViewById(R.id.item_image);
                                     vh.card_title = (TextView) vh.itemView.findViewById(R.id.item_title);
                                     vh.card_description = (TextView) vh.itemView.findViewById(R.id.item_description);
+                                    vh.card_price = (TextView) vh.itemView.findViewById(R.id.item_price);
                                     return vh;
                                 }
 
@@ -142,9 +147,12 @@ public class MainShopActivity extends AppCompatActivity {
 
                                     Picasso.get().load(String.valueOf(products.get(position).URLi1mageOfItem)).into(holder.card_image);
                                     String title = String.valueOf(products.get(position).title);
-                                    String description = String.valueOf(products.get(position).description);
+                                    String description = String.valueOf(products.get(position).title);
+                                    String price = String.valueOf(products.get(position).price);
                                     holder.card_title.setText(title);
-                                    holder.card_description.setText("item description");
+
+                                    holder.card_description.setText(description+ "...");
+                                    holder.card_price.setText("€"+price);
                                 }
 
 
