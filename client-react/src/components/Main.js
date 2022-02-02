@@ -1,6 +1,10 @@
 import { Component } from 'react';
 import Home from './Home';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Cart from './Cart';
+import Orders from './Order';
+import Shop from './Shop';
 
 class Main extends Component {
     render(){
@@ -10,9 +14,15 @@ class Main extends Component {
                     <Route path='/home'>
                         <Home/>
                     </Route>
-                   
-      
-
+                    <Route path='/shop'>
+                        <Shop/>
+                    </Route>  
+                    <Route path='/cart'>
+                        <Cart/>
+                    </Route>
+                    <Route path='/orders'>
+                        <Orders/>
+                    </Route>
                     <Redirect to='/home'/>
                 </Switch>
             </div>
@@ -20,4 +30,4 @@ class Main extends Component {
     }
 }
 
-export default Main;
+export default withRouter(connect()(Main));

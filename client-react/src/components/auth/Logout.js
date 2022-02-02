@@ -13,8 +13,12 @@ export class Logout extends Component {
         return (
             <div>
                 <Fragment>
-                    <Button color="danger" className="btn btn-sm"><NavLink onClick={this.props.logout} href="#"><span className="text-light"><b>Logout</b></span></NavLink></Button>
-                </Fragment>
+                <a className="my-1 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 lg:mx-4 lg:my-0" onClick={this.props.logout} href="#">Logout</a>
+
+                    {/*
+                        <Button color="danger" className="btn btn-sm"><NavLink onClick={this.props.logout} href="#"><span className="text-light"><b>Logout</b></span></NavLink></Button>
+                    */}
+                        </Fragment>
             </div>
         )
     }
