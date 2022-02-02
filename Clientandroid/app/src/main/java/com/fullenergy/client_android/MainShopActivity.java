@@ -120,7 +120,11 @@ public class MainShopActivity extends AppCompatActivity {
                             }
                             private void render(final List<ProductClass> products){
                                 RecyclerView rv = (RecyclerView)findViewById(R.id.shop_recyclerview);
-                                rv.setLayoutManager(new LinearLayoutManager(MainShopActivity.this));
+
+                                LinearLayoutManager llm = new LinearLayoutManager(MainShopActivity.this);
+                                llm.setOrientation(LinearLayoutManager.HORIZONTAL);
+                                rv.setLayoutManager(llm);
+
 
                                 rv.setAdapter(adapter);
                                 rv.addItemDecoration(new RecyclerView.ItemDecoration() {

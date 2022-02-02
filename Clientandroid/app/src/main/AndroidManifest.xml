@@ -12,9 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cristian"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".MainShopActivity2"
-            android:exported="false" />
+
         <activity
             android:name=".MainShopActivity"
             android:exported="false" />
