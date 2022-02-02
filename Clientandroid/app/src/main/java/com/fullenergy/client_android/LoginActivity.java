@@ -29,7 +29,9 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 public class LoginActivity extends AppCompatActivity {
     //BASE URL For Requests
-    private static final String BASE_URL = "http://192.168.142.125:4000/api";
+    UsefulStrings url = new UsefulStrings();
+    String BASE_URL = url.getURL();
+
 
     public TextView email;
     public TextView password;
@@ -144,6 +146,21 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+    public void goToMain(){
+        int timeout = 500; // make the activity visible for 4 seconds
+
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+
+            @Override
+            public void run() {
+                finish();
+                Intent mainAct = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(mainAct);
+            }
+        }, timeout);
+
+    }
     public void setUpUI(){
         email = (EditText) findViewById(R.id.login_email);
         password =  (EditText) findViewById(R.id.login_password);
@@ -185,18 +202,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                int timeout = 500; // make the activity visible for 4 seconds
-
-                Timer timer = new Timer();
-                timer.schedule(new TimerTask() {
-
-                    @Override
-                    public void run() {
-                        finish();
-                        Intent mainAct = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(mainAct);
-                    }
-                }, timeout);
+                goToMain();
             }
         });
 

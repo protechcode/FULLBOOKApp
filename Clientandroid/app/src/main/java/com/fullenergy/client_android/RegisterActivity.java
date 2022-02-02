@@ -29,7 +29,8 @@ import okhttp3.Response;
 
 public class RegisterActivity extends AppCompatActivity {
     //BASE URL For Requests
-    private static final String BASE_URL = "http://192.168.142.125:4000/api";
+    UsefulStrings url = new UsefulStrings();
+    String BASE_URL = url.getURL();
 
     //Declaration of UI elements
     public EditText nameBox;
@@ -154,6 +155,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, final Response response) throws IOException {
                 String res = response.body().string();
+                goToMain();
 
                 Log.i("Register.postData(): ", res);
 
@@ -162,6 +164,21 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 }
+    public void goToMain(){
+        int timeout = 500; // make the activity visible for 4 seconds
+
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+
+            @Override
+            public void run() {
+                finish();
+                Intent mainAct = new Intent(RegisterActivity.this, MainActivity.class);
+                startActivity(mainAct);
+            }
+        }, timeout);
+
+    }
     //End of okHttp Request
 
     //Setters
@@ -223,18 +240,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                int timeout = 500; // make the activity visible for 4 seconds
-
-                Timer timer = new Timer();
-                timer.schedule(new TimerTask() {
-
-                    @Override
-                    public void run() {
-                        finish();
-                        Intent mainAct = new Intent(RegisterActivity.this, MainActivity.class);
-                        startActivity(mainAct);
-                    }
-                }, timeout);
+                goToMain();
             }
         });
     }

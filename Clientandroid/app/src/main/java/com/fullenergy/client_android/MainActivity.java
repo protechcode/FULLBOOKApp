@@ -21,7 +21,7 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     //BASE URL For Requests
-    UsefullStrings url = new UsefullStrings();
+    UsefulStrings url = new UsefulStrings();
     String BASE_URL = url.getURL();
 
 
@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     public Button Button_1;
     public Button Button_2;
     public Button Button_3;
+    public Button Button_4;
+
     private OkHttpClient httpClient;
     private void fetchData() {
 
@@ -92,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         Button_1 = findViewById(R.id.main_button_1);
         Button_2 = findViewById(R.id.main_button_2);
         Button_3 = findViewById(R.id.main_button_3);
+        Button_4 = findViewById(R.id.main_button_4);
     }
     public void setUpListeners(){
         Button_1.setOnClickListener(new View.OnClickListener() {
@@ -135,11 +138,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 fetchData();
+            }
+        });
+        Button_4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int timeout = 500; // make the activity visible for 4 seconds
 
+                Timer timer = new Timer();
+                timer.schedule(new TimerTask() {
 
-
-
-
+                    @Override
+                    public void run() {
+                        finish();
+                        Intent register = new Intent(MainActivity.this, MainShopActivity.class);
+                        startActivity(register);
+                    }
+                }, timeout);
             }
         });
 
