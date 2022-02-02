@@ -1,10 +1,12 @@
 package com.fullenergy.client_android;
 
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,6 +24,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -74,6 +78,32 @@ public class MainShopActivity extends AppCompatActivity {
 
     }
 
+    public void setUpButton(){
+        Button backToMain = (Button) findViewById(R.id.shop_back_to_main);
+        backToMain.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                goToMain();
+            }
+        });
+    }
+
+    private void goToMain() {
+        int timeout = 500; // make the activity visible for 4 seconds
+
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+
+            @Override
+            public void run() {
+                finish();
+                Intent mainAct = new Intent(MainShopActivity.this, MainActivity.class);
+                startActivity(mainAct);
+            }
+        }, timeout);
+    }
+
 
     //End of MyMethods;
 
@@ -83,6 +113,7 @@ public class MainShopActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_shop);
+        setUpButton();
 
         try {
             fetchData();

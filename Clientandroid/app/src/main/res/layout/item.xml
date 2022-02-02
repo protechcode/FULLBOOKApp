@@ -16,94 +16,97 @@
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/item_title"
-                android:layout_width="215dp"
-                android:layout_height="50dp"
-                android:layout_gravity="left"
-                android:layout_margin="3dp"
-                android:layout_marginEnd="16dp"
-                android:gravity="left"
-                android:paddingStart="35px"
-                android:paddingLeft="50px"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.45"
-                app:layout_constraintStart_toEndOf="@+id/item_image"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.038"
-                tools:visibility="visible" />
-
-            <TextView
-                android:id="@+id/item_description"
-                android:layout_width="213dp"
-                android:layout_height="78dp"
-                android:layout_margin="3dp"
-                android:layout_marginTop="8dp"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:paddingStart="35px"
-                android:scrollHorizontally="true"
-                android:textAlignment="center"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.421"
-                app:layout_constraintStart_toEndOf="@+id/item_image"
-
-                app:layout_constraintTop_toBottomOf="@+id/item_title"
-                app:layout_constraintVertical_bias="0.017" />
-
             <ImageView
                 android:id="@+id/item_image"
                 android:layout_width="126dp"
                 android:layout_height="126dp"
-                android:layout_marginTop="10dp"
                 android:contentDescription="Item Image"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.059"
+                app:layout_constraintHorizontal_bias="0.071"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.042" />
+                app:layout_constraintVertical_bias="0.132" />
+
+            <TextView
+                android:id="@+id/item_title"
+                android:layout_width="155dp"
+                android:layout_height="61dp"
+                android:layout_gravity="left"
+                android:layout_margin="3dp"
+                android:gravity="left"
+                android:paddingStart="35px"
+                android:paddingLeft="50px"
+                android:paddingEnd="10dp"
+                android:textColor="@color/Xiketic"
+                android:textSize="24sp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.698"
+                app:layout_constraintStart_toEndOf="@+id/item_image"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.145"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/item_description"
+                android:layout_width="166dp"
+                android:layout_height="79dp"
+                android:layout_margin="3dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:paddingStart="35px"
+                android:paddingEnd="10dp"
+                android:scrollHorizontally="true"
+                android:textAlignment="center"
+                android:textColor="@color/Xiketic"
+                android:textSize="14sp"
+
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.983"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/item_title"
+                app:layout_constraintVertical_bias="0.031" />
 
             <TextView
                 android:id="@+id/item_price"
                 android:layout_width="117dp"
                 android:layout_height="29dp"
-                android:layout_marginStart="62dp"
+                android:textColor="@color/RussianViolet"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/item_image"
+                app:layout_constraintHorizontal_bias="0.763"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/item_description"
-                app:layout_constraintVertical_bias="0.026" />
+                app:layout_constraintVertical_bias="0.044" />
 
             <Button
                 android:id="@+id/button"
                 android:layout_width="126dp"
                 android:layout_height="61dp"
+                android:backgroundTint="@color/BlueSapphire"
                 android:text="Add To Cart"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/item_price"
-                app:layout_constraintHorizontal_bias="0.118"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.142"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/item_image"
-                app:layout_constraintVertical_bias="0.014" />
+                app:layout_constraintVertical_bias="0.062" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>
 

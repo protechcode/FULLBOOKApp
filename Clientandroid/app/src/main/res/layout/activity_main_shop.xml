@@ -8,15 +8,17 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/shop_recyclerview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="384dp"
+        android:layout_height="283dp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.137"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.048" />
+        app:layout_constraintVertical_bias="0.033">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <TextView
         android:id="@+id/textView"
@@ -28,10 +30,23 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.161"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.167" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/shop_back_to_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/BlueSapphire"
+        android:text="Go to Main"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.199"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shop_recyclerview"
+        app:layout_constraintVertical_bias="0.148" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -39,10 +54,10 @@
         android:layout_height="106dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.439"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.019"
+        app:layout_constraintVertical_bias="0.006"
         app:srcCompat="@drawable/full_energy_logo" />
 
 
