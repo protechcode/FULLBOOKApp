@@ -5,7 +5,7 @@ module.exports.get_items = (req,res) => {
 }
 
 module.exports.get_item = (req,res) => {
-    Item.findById({_id: req.params.id},req).then(function(item){
+    Item.findById({_id: req.params.id},req.body).then(function(item){
         Item.findOne({_id: req.params.id}).then(function(item){
             res.json(item);
         });
