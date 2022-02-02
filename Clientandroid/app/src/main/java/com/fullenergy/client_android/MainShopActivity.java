@@ -1,5 +1,6 @@
 package com.fullenergy.client_android;
 
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -39,6 +40,7 @@ public class MainShopActivity extends AppCompatActivity {
     public class ProductClass {
         String URLi1mageOfItem;
         String title;
+        String description;
         /**
          * String URL2imageOfItem;
          * String description;
@@ -51,6 +53,7 @@ public class MainShopActivity extends AppCompatActivity {
     private static class ProductViewHolder extends RecyclerView.ViewHolder {
         ImageView card_image;
         TextView card_title;
+        TextView card_description;
 
         public ProductViewHolder(View item_dot_xmlView) {
             super(item_dot_xmlView);
@@ -102,6 +105,7 @@ public class MainShopActivity extends AppCompatActivity {
                             JSONObject item = items.getJSONObject(i);
                             ProductClass product = new ProductClass();
                             product.title = item.getString("title");
+                            product.description = item.getString("description");
                             product.URLi1mageOfItem = item.getString("image_1");
                             products.add(product); // Add product to list
                         }
@@ -115,6 +119,12 @@ public class MainShopActivity extends AppCompatActivity {
                                 rv.setLayoutManager(new LinearLayoutManager(MainShopActivity.this));
 
                                 rv.setAdapter(adapter);
+                                rv.addItemDecoration(new RecyclerView.ItemDecoration() {
+                                    @Override
+                                    public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+                                        outRect.bottom = 16; // Gap of 16px
+                                    }
+                                });
                             }
                             RecyclerView.Adapter<ProductViewHolder> adapter = new RecyclerView.Adapter<ProductViewHolder>() {
                                 @NonNull
@@ -123,6 +133,7 @@ public class MainShopActivity extends AppCompatActivity {
                                     ProductViewHolder vh = new ProductViewHolder(getLayoutInflater().inflate(R.layout.item, null));
                                     vh.card_image = (ImageView) vh.itemView.findViewById(R.id.item_image);
                                     vh.card_title = (TextView) vh.itemView.findViewById(R.id.item_title);
+                                    vh.card_description = (TextView) vh.itemView.findViewById(R.id.item_description);
                                     return vh;
                                 }
 
@@ -131,14 +142,11 @@ public class MainShopActivity extends AppCompatActivity {
 
                                     Picasso.get().load(String.valueOf(products.get(position).URLi1mageOfItem)).into(holder.card_image);
                                     String title = String.valueOf(products.get(position).title);
+                                    String description = String.valueOf(products.get(position).description);
                                     holder.card_title.setText(title);
+                                    holder.card_description.setText("item description");
                                 }
-                                /**
-                                 *  public void onBindViewHolder(PhotoVH holder, int position) {
-                                 *                                 Picasso.get().load("https://i.imgur.com/" +
-                                 *                                         photos.get(position).id + ".jpg").into(holder.photo);
-                                 *                                 holder.title.setText(photos.get(position).title);
-                                 *                             }*/
+
 
                                 @Override
                                 public int getItemCount() {

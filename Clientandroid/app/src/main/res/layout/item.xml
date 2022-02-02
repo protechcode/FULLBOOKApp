@@ -1,29 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:tools="http://schemas.android.com/tools"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-
+    android:layout_centerInParent="true"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:padding="10dp"
+    android:textAlignment="center"
+    android:textDirection="firstStrongRtl"
+    app:cardElevation="5dp">
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="393dp"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/item_description"
+            android:layout_width="227dp"
+            android:layout_height="37dp"
+            android:layout_margin="3dp"
+            android:layout_marginStart="40dp"
+            android:paddingStart="35px"
+            android:textAlignment="center"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item_image"
+            tools:layout_editor_absoluteY="10dp" />
+
+        <TextView
+            android:id="@+id/item_title"
+            android:layout_width="221dp"
+            android:layout_height="86dp"
+            android:layout_gravity="left"
+            android:layout_margin="3dp"
+            android:layout_marginTop="60dp"
+            android:gravity="left"
+            android:paddingStart="35px"
+            android:paddingLeft="50px"
+            android:textAlignment="center"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.425"
+            app:layout_constraintStart_toEndOf="@+id/item_image"
+            app:layout_constraintTop_toBottomOf="@+id/item_description"
+            app:layout_constraintVertical_bias="0.0"
+            tools:visibility="visible" />
 
         <ImageView
             android:id="@+id/item_image"
             android:layout_width="126dp"
             android:layout_height="126dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="10dp" />
+            android:contentDescription="Item Image"
+            tools:layout_editor_absoluteX="6dp"
+            tools:layout_editor_absoluteY="10dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/item_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+
     </androidx.appcompat.widget.LinearLayoutCompat>
-
 
 </androidx.cardview.widget.CardView>
 
