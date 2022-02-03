@@ -4,11 +4,17 @@ import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -140,7 +146,7 @@ public class MainShopActivity extends AppCompatActivity {
                             ProductClass product = new ProductClass();
                             product.title = item.getString("title");
                             product.price = item.getString("description");
-                            product.price = item.getString("price");
+                            product.price = item.getString("sell_price");
                             product.URLi1mageOfItem = item.getString("image_1");
                             products.add(product); // Add product to list
                         }
@@ -165,7 +171,11 @@ public class MainShopActivity extends AppCompatActivity {
                                     }
                                 });
                             }
-                            RecyclerView.Adapter<ProductViewHolder> adapter = new RecyclerView.Adapter<ProductViewHolder>() {
+
+                            final RecyclerView.Adapter<ProductViewHolder> adapter = new RecyclerView.Adapter<ProductViewHolder>() {
+                                private ProductViewHolder holder;
+                                private int position;
+
                                 @NonNull
                                 @Override
                                 public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -180,14 +190,61 @@ public class MainShopActivity extends AppCompatActivity {
                                 @Override
                                 public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
 
+
                                     Picasso.get().load(String.valueOf(products.get(position).URLi1mageOfItem)).into(holder.card_image);
+                                    String image_url_1 = String.valueOf(products.get(position).URLi1mageOfItem);
                                     String title = String.valueOf(products.get(position).title);
                                     String description = String.valueOf(products.get(position).title);
                                     String price = String.valueOf(products.get(position).price);
                                     holder.card_title.setText(title);
 
-                                    holder.card_description.setText(description+ "...");
-                                    holder.card_price.setText("€"+price);
+                                    holder.card_description.setText(description + "...");
+                                    holder.card_price.setText("€" + price);
+
+                                    /////
+
+
+
+
+
+
+
+                                    holder.itemView.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            // inflate the layout of the popup window
+                                            LayoutInflater inflater = (LayoutInflater)
+                                                    getSystemService(LAYOUT_INFLATER_SERVICE);
+                                            View popupView = inflater.inflate(R.layout.pop_up_product, null);
+                                            // create the popup window
+                                            int width = LinearLayout.LayoutParams.MATCH_PARENT;
+                                            int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                                            boolean focusable = true; // lets taps outside the popup also dismiss it
+                                            PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+                                            ((TextView)popupWindow.getContentView().findViewById(R.id.pop_up_title)).setText(title);
+                                            ((TextView)popupWindow.getContentView().findViewById(R.id.pop_up_description)).setText(description);
+                                            ((TextView)popupWindow.getContentView().findViewById(R.id.pop_up_price)).setText(price);
+                                            Picasso.get().load(image_url_1).into((ImageView) popupWindow.getContentView().findViewById(R.id.pop_up_image));
+
+                                            // show the popup window
+                                            // which view you pass in doesn't matter, it is only used for the window
+                                            popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+                                            // dismiss the popup window when touched
+                                            popupView.setOnTouchListener(new View.OnTouchListener() {
+                                                                             @Override
+                                                                             public boolean onTouch(View v, MotionEvent event) {
+                                                                                 popupWindow.dismiss();
+                                                                                 return true;
+                                                                             }
+                                                                         });
+
+
+                                            Toast toast = Toast.makeText(getApplicationContext(), title, Toast.LENGTH_SHORT);
+                                            toast.setMargin(50, 50);
+                                            toast.show();
+                                        }
+                                    });
                                 }
 
 
