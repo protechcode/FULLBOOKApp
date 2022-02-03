@@ -52,6 +52,7 @@ public class MainShopActivity extends AppCompatActivity {
         String title;
         String price;
         String description;
+        String category;
 
         /**
          * String URL2imageOfItem;
@@ -138,6 +139,7 @@ public class MainShopActivity extends AppCompatActivity {
                     try {
                         JSONObject data = new JSONObject(response.body().string());
                         JSONArray items = data.getJSONArray("items");
+                        Log.i("APi Response in shop", String.valueOf(data));
                         final List<ProductClass> products = new ArrayList<ProductClass>();
 
 
@@ -145,7 +147,8 @@ public class MainShopActivity extends AppCompatActivity {
                             JSONObject item = items.getJSONObject(i);
                             ProductClass product = new ProductClass();
                             product.title = item.getString("title");
-                            product.price = item.getString("description");
+                            product.description = item.getString("description");
+                            product.category = item.getString("category_name");
                             product.price = item.getString("sell_price");
                             product.URLi1mageOfItem = item.getString("image_1");
                             products.add(product); // Add product to list
@@ -194,8 +197,9 @@ public class MainShopActivity extends AppCompatActivity {
                                     Picasso.get().load(String.valueOf(products.get(position).URLi1mageOfItem)).into(holder.card_image);
                                     String image_url_1 = String.valueOf(products.get(position).URLi1mageOfItem);
                                     String title = String.valueOf(products.get(position).title);
-                                    String description = String.valueOf(products.get(position).title);
+                                    String description = String.valueOf(products.get(position).description);
                                     String price = String.valueOf(products.get(position).price);
+                                    String category = String.valueOf(products.get(position).category);
                                     holder.card_title.setText(title);
 
                                     holder.card_description.setText(description + "...");
@@ -223,6 +227,7 @@ public class MainShopActivity extends AppCompatActivity {
                                             PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
                                             ((TextView)popupWindow.getContentView().findViewById(R.id.pop_up_title)).setText(title);
                                             ((TextView)popupWindow.getContentView().findViewById(R.id.pop_up_description)).setText(description);
+                                            ((TextView)popupWindow.getContentView().findViewById(R.id.pop_up_category)).setText(category);
                                             ((TextView)popupWindow.getContentView().findViewById(R.id.pop_up_price)).setText(price);
                                             Picasso.get().load(image_url_1).into((ImageView) popupWindow.getContentView().findViewById(R.id.pop_up_image));
 
