@@ -58,7 +58,7 @@ class AppNavbar extends Component {
           <div className="flex items-center justify-between">
             <div className="max-w-18" >
               <a >
-                  <img src={logoimage} />
+                  <img class="object-contain  w-20" src={logoimage} />
 
              </a>
             </div>
@@ -96,10 +96,10 @@ class AppNavbar extends Component {
 
           <a href="/shop" className="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-200 transform dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6">Shop</a>
 
-          <a href="#" className="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-200 transform dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6">About us</a>
+          <a href="/home#about" className="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-200 transform dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6">About us</a>
 
-          <a href="#" className="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-200 transform dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6">Contact</a>
-
+          <a href="#contact" className="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-200 transform dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6">Contact</a>
+       
         </div>
       </nav>
 
