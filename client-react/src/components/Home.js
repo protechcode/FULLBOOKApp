@@ -61,15 +61,14 @@ class Home extends Component {
                         <p className="mt-1">{item.price}€</p>
 
                       </div>
-                      {this.props.isAuthenticated ?
-                        <Button
-                          color="success"
-                          size="sm"
-                          onClick={this.onAddToCart.bind(this, user._id, item._id), console.log(item._id) }
-                        >Add To Cart</Button> :
-                        null}
-                        
-                    </div>
+                      {this.props.isAuthenticated ? 
+                                <Button
+                                    color="success"
+                                    size="sm"
+                                    onClick={this.onAddToCart.bind(this, user._id, item._id)}
+                                    >Add To Cart</Button> :
+                                    null}
+              </div>
 
                   </div>
                 </div>
