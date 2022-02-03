@@ -8,7 +8,7 @@ const CartSchema = new Schema({
         
     user_id:{
         type: String,
-        required:[true, 'Please provide User ._id ']
+        ref: "user"
     },
     items: [{
         item_id:{
@@ -22,7 +22,8 @@ const CartSchema = new Schema({
             required: true, 
             min: [1, 'Quantity can not be less than 1'],
             default:1
-        }, price:{
+        },
+        sell_price:{
             type: Number,
         }
     }],
