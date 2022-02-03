@@ -16,6 +16,10 @@ const ItemSchema = new Schema({
         type: String,
         required: [true,"Please add the category of the item"]
     },
+    category_name:{
+        type:String,
+        required: [true,"Please add the category for this item"]
+    },
     price:{
         type: Number,
         required: [true,"Please add the price of the item"]
@@ -54,17 +58,14 @@ const ItemSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    found_at: {
+    foudnd_at: {
         type: String,
         maxlength:[255, "Too many characters"]      
     },
     provider_id:{
         type:String
     },
-    size: {
-        type:Array
     
-    },
 });
 
 module.exports = Item = mongoose.model('item',ItemSchema);
