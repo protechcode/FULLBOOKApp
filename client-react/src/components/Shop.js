@@ -42,7 +42,7 @@ class Home extends Component {
               <img className="w-full h-full lg:max-w-2xl" src={item.image_1} alt="Catalogue-pana.svg" />
             </a>
             <div className="mt-4 items-center">
-              <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
+              <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">{item.category_name}</h3>
               <ItemModal item={item} key={item._id}/>
               
               <span className="fa fa-star checked"></span>
