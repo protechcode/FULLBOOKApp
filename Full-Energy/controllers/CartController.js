@@ -46,10 +46,12 @@ module.exports.add_cart_item = async (req,res) => {
         }
         const sell_price = item.sell_price;
         const title = item.title;
-        const item_id = item._id
+        const item_id = item._id;
+        const image_1 =item.image_1;
+        const category_name = item.category_name;
         if(cart){
             // if cart exists for the user
-            let itemIndex = cart.items.findIndex(p => item_id == productId);
+            let itemIndex = cart.items.findIndex(p => p.item_id == productId);
             console.log(itemIndex);
             // Check if product exists or not
             if(itemIndex > -1)
@@ -59,7 +61,7 @@ module.exports.add_cart_item = async (req,res) => {
                 cart.items[itemIndex] = productItem;
             }
             else {
-                cart.items.push({ item_id,productId, title, quantity, sell_price });
+                cart.items.push({ item_id,productId, title, quantity, sell_price ,image_1, category_name});
             }
             cart.subtotal += quantity*sell_price;
             cart = await cart.save();
@@ -69,7 +71,7 @@ module.exports.add_cart_item = async (req,res) => {
             // no cart exists, create one
             const newCart = await Cart.create({
                 user_id:userId,
-                items: [{item_id, productId, title, quantity, sell_price }],
+                items: [{item_id, productId, title, quantity, sell_price ,image_1, category_name}],
                 subtotal: quantity*sell_price
             });
             return res.status(201).send(newCart);
@@ -98,7 +100,7 @@ module.exports.update_cart_item = async (req, res) => {
             const item_id = item._id;
 
             // if cart exists for the user
-            let itemIndex = cart.items.findIndex(p => item_id == productId);
+            let itemIndex = cart.items.findIndex(p => p.item_id == productId);
 
             // Check if product exists or not
             if(itemIndex == -1)

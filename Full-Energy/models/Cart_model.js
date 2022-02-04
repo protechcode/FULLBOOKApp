@@ -25,6 +25,12 @@ const CartSchema = new Schema({
         },
         sell_price:{
             type: Number,
+        },
+        category_name:{
+            type:String
+        },
+        image_1:{
+            type:String
         }
     }],
     purchased:{

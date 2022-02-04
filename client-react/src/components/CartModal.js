@@ -1,14 +1,14 @@
 import { Component, Fragment } from 'react';
 import {
-    Card, CardText, CardBody, CardTitle, CardSubtitle, Button, Alert, Container, Modal,
+    Card, CardText, CardBody, Button, Alert, Container, Modal,
     ModalHeader,
     ModalBody,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getCart, deleteFromCart } from '../actions/cartActions';
-//import Checkout from './Checkout';
-//import { checkout } from '../actions/orderActions';
+import { getCart, deleteFromCart,updateCart } from '../actions/cartActions';
+import Checkout from './Checkout';
+import { checkout } from '../actions/orderActions';
 
 
 class CartModal extends Component {
@@ -17,8 +17,8 @@ class CartModal extends Component {
         modal: false,
         loaded: false,
     }
-
     static propTypes = {
+        updateCart: PropTypes.func.isRequired,
         getCart: PropTypes.func.isRequired,
         isAuthenticated: PropTypes.bool,
         addToCart: PropTypes.func.isRequired,
@@ -35,10 +35,16 @@ class CartModal extends Component {
 
     onDeleteFromCart = (id, itemId) => {
         this.props.deleteFromCart(id, itemId);
+    } 
+    onUpdateQuantity = async (userId, productId, qty) => {
+      await this.props.updateCart(userId, productId, qty);
+
     }
+    
+
     toggle = () => {
         // Clear errors
-        // this.props.clearErrors();
+       // this.props.clearErrors();
         this.setState({
             modal: !this.state.modal
         });
@@ -110,7 +116,15 @@ class CartModal extends Component {
                                                                     </div>
                                                                 </div>
                                                                 <div class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">
-                                                                    <CardText>{item.quantity}</CardText>
+                                                                    <CardText>
+                                                                    <p style={{...qtyBtn, border:"1px solid red", color: "Red"}} onClick={() => {if (item.quantity>1){this.onUpdateQuantity(user._id, item.item_id, item.quantity - 1)} }}>
+                                                                                             -1
+                                                                                           </p>
+                                                                        {item.quantity}
+                                                                        <p style={{...qtyBtn, border:"1px solid green", color: "green"}} onClick={() => this.onUpdateQuantity(user._id, item.item_id, item.quantity + 1)}>
+                                                                                        +1
+                                                                                    </p>
+                                                                        </CardText>
                                                                 </div>
 
                                                                 <div class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">
@@ -161,5 +175,8 @@ const mapStateToProps = (state) => ({
     user: state.auth.user,
 })
 
+const qtyBox = {display: "flex", justifyContent: "space-evenly", border: "1px solid #aaa", borderRadius: "5px", paddingTop: "5px", paddingBottom: "5px", marginBottom: "5px"};
+const qtyBtn = {paddingLeft: "5px", paddingRight: "5px", borderRadius: "5px", marginBottom: "0px"};
 
-export default connect(mapStateToProps, { getCart, deleteFromCart })(CartModal);
+export default connect(mapStateToProps, {getCart, updateCart, deleteFromCart, checkout})(CartModal);
+
