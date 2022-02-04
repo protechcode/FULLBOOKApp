@@ -4,9 +4,10 @@ import {Card, CardText, CardBody, CardTitle, CardSubtitle, Button, Alert, Contai
     ModalBody,} from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getCart, deleteFromCart } from '../actions/cartActions';
-//import Checkout from './Checkout';
-//import { checkout } from '../actions/orderActions';
+import { getCart, deleteFromCart, updateCart } from '../actions/cartActions';
+import Checkout from './Checkout';
+import { checkout } from '../actions/orderActions'
+;
 
 
 class CartModal extends Component {
@@ -15,8 +16,8 @@ class CartModal extends Component {
         modal: false,
         loaded: false,
     }
-
     static propTypes = {
+        updateCart: PropTypes.func.isRequired,
         getCart: PropTypes.func.isRequired,
         isAuthenticated: PropTypes.bool,
         addToCart: PropTypes.func.isRequired,
@@ -34,6 +35,11 @@ class CartModal extends Component {
     onDeleteFromCart = (id, itemId) => {
         this.props.deleteFromCart(id, itemId);
     } 
+    onUpdateQuantity = async (userId, productId, qty) => {
+      await this.props.updateCart(userId, productId, qty);
+    }
+    
+
     toggle = () => {
         // Clear errors
        // this.props.clearErrors();
@@ -61,6 +67,7 @@ class CartModal extends Component {
                     </a>
                 </div>
                 <Modal
+                size="lg"
                 isOpen={this.state.modal}
                 toggle={this.toggle}
             >
@@ -68,7 +75,7 @@ class CartModal extends Component {
                         Cart
                     </ModalHeader>
                     <ModalBody>
-                {this.props.isAuthenticated ?
+                    {this.props.isAuthenticated ?
                     <Fragment>
                         {this.props.cart.cart ? null :
                             <Alert color="info" className="text-center">Your cart is empty!</Alert>
@@ -87,7 +94,15 @@ class CartModal extends Component {
                             <CardBody>
                                 <CardTitle tag="h5">{item.title}</CardTitle>
                                 <CardSubtitle tag="h6">Rs. {item.sell_price}</CardSubtitle>
-                                <CardText>Quantity - {item.quantity}</CardText>
+                                <div style={qtyBox}>
+                                  <p style={{...qtyBtn, border:"1px solid red", color: "Red"}} onClick={() => this.onUpdateQuantity(user._id, item._id, item.quantity - 1)}>
+                                    -1
+                                  </p>
+                                  <CardText>Quantity : {item.quantity}</CardText>
+                                  <p style={{...qtyBtn, border:"1px solid green", color: "green"}} onClick={() => this.onUpdateQuantity(user._id, item._id, item.quantity + 1)}>
+                                    +1
+                                  </p>
+                                </div>
                                 <Button color="danger" onClick={this.onDeleteFromCart.bind(this, user._id, item._id)}>Delete</Button>
                             </CardBody>
                         </Card>
@@ -98,11 +113,11 @@ class CartModal extends Component {
                         <Card>
                             <CardBody>
                                 <CardTitle tag="h5">Total Cost = Rs. {this.props.cart.cart.subtotal}</CardTitle>
-                        {   /*     <Checkout
+                              { /* <Checkout
                                     user={user._id}
                                     amount={this.props.cart.cart.subtotal}
                                     checkout={this.props.checkout}
-                                /> */}                  
+                              />    */}               
                             </CardBody>
                         </Card>
                         </div>
@@ -123,4 +138,8 @@ const mapStateToProps = (state) => ({
     user: state.auth.user,
 })
 
-export default connect(mapStateToProps, {getCart, deleteFromCart})(CartModal);
+const qtyBox = {display: "flex", justifyContent: "space-evenly", border: "1px solid #aaa", borderRadius: "5px", paddingTop: "5px", paddingBottom: "5px", marginBottom: "5px"};
+const qtyBtn = {paddingLeft: "5px", paddingRight: "5px", borderRadius: "5px", marginBottom: "0px"};
+
+export default connect(mapStateToProps, {getCart, updateCart, deleteFromCart, checkout})(CartModal);
+

@@ -1,11 +1,26 @@
 const Cart = require('../models/Cart_model');
 const Item = require('../models/Item_model');
 
-
+module.exports.get_cart = async (req,res) => {
+    const cartId = req.params.id;
+    try{
+        let cart = await Cart.find();
+        if(cart ){
+            res.send(cart);
+        }
+        else{
+            res.send(null);
+        }
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).send("Something went wrong");
+    }
+}
 module.exports.get_cart_items = async (req,res) => {
     const userId = req.params.id;
     try{
-        let cart = await Cart.findOne({userId});
+        let cart = await Cart.findOne({user_id:userId});
         if(cart && cart.items.length>0){
             res.send(cart);
         }
@@ -24,18 +39,18 @@ module.exports.add_cart_item = async (req,res) => {
     const { productId, quantity } = req.body;
 
     try{
-        let cart = await Cart.findOne({userId});
+        let cart = await Cart.findOne({user_id:userId});
         let item = await Item.findOne({_id: productId});
         if(!item){
             res.status(404).send('Item not found!')
         }
         const sell_price = item.sell_price;
-        const name = item.title;
-        
+        const title = item.title;
+        const item_id = item._id
         if(cart){
             // if cart exists for the user
-            let itemIndex = cart.items.findIndex(p => p.productId == productId);
-
+            let itemIndex = cart.items.findIndex(p => item_id == productId);
+            console.log(itemIndex);
             // Check if product exists or not
             if(itemIndex > -1)
             {
@@ -44,7 +59,7 @@ module.exports.add_cart_item = async (req,res) => {
                 cart.items[itemIndex] = productItem;
             }
             else {
-                cart.items.push({ productId, name, quantity, sell_price });
+                cart.items.push({ item_id,productId, title, quantity, sell_price });
             }
             cart.subtotal += quantity*sell_price;
             cart = await cart.save();
@@ -53,8 +68,8 @@ module.exports.add_cart_item = async (req,res) => {
         else{
             // no cart exists, create one
             const newCart = await Cart.create({
-                userId,
-                items: [{ productId, name, quantity, sell_price }],
+                user_id:userId,
+                items: [{item_id, productId, title, quantity, sell_price }],
                 subtotal: quantity*sell_price
             });
             return res.status(201).send(newCart);
@@ -68,10 +83,10 @@ module.exports.add_cart_item = async (req,res) => {
 module.exports.update_cart_item = async (req, res) => {
     const userId = req.params.id;
     const { productId, qty } = req.body;
-
     try{
-        let cart = await Cart.findOne({userId});
+        let cart = await Cart.findOne({user_id:userId});
         let item = await Item.findOne({_id: productId});
+        
 
         if(!item)
             return res.status(404).send('Item not found!'); // not returning will continue further execution of code.
@@ -80,7 +95,7 @@ module.exports.update_cart_item = async (req, res) => {
           return res.status(400).send("Cart not found");
         else{
             // if cart exists for the user
-            let itemIndex = cart.items.findIndex(p => p.productId == productId);
+            let itemIndex = cart.items.findIndex(p => item_id == productId);
 
             // Check if product exists or not
             if(itemIndex == -1)
@@ -106,7 +121,7 @@ module.exports.delete_item = async (req,res) => {
     const userId = req.params.userId;
     const productId = req.params.itemId;
     try{
-        let cart = await Cart.findOne({userId});
+        let cart = await Cart.findOne({user_id:userId});
         let itemIndex = cart.items.findIndex(p => p._id == productId);
         if(itemIndex > -1)
         {
