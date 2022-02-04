@@ -37,6 +37,8 @@ class CartModal extends Component {
     } 
     onUpdateQuantity = async (userId, productId, qty) => {
       await this.props.updateCart(userId, productId, qty);
+      this.state.loaded = true;
+
     }
     
 
@@ -95,11 +97,11 @@ class CartModal extends Component {
                                 <CardTitle tag="h5">{item.title}</CardTitle>
                                 <CardSubtitle tag="h6">Rs. {item.sell_price}</CardSubtitle>
                                 <div style={qtyBox}>
-                                  <p style={{...qtyBtn, border:"1px solid red", color: "Red"}} onClick={() => this.onUpdateQuantity(user._id, item._id, item.quantity - 1)}>
+                                  <p style={{...qtyBtn, border:"1px solid red", color: "Red"}} onClick={() => this.onUpdateQuantity(user._id, item.item_id, item.quantity - 1)}>
                                     -1
                                   </p>
                                   <CardText>Quantity : {item.quantity}</CardText>
-                                  <p style={{...qtyBtn, border:"1px solid green", color: "green"}} onClick={() => this.onUpdateQuantity(user._id, item._id, item.quantity + 1)}>
+                                  <p style={{...qtyBtn, border:"1px solid green", color: "green"}} onClick={() => this.onUpdateQuantity(user._id, item.item_id, item.quantity + 1)}>
                                     +1
                                   </p>
                                 </div>

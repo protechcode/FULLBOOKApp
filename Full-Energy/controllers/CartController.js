@@ -86,7 +86,7 @@ module.exports.update_cart_item = async (req, res) => {
     try{
         let cart = await Cart.findOne({user_id:userId});
         let item = await Item.findOne({_id: productId});
-        
+
 
         if(!item)
             return res.status(404).send('Item not found!'); // not returning will continue further execution of code.
@@ -94,6 +94,9 @@ module.exports.update_cart_item = async (req, res) => {
         if(!cart)
           return res.status(400).send("Cart not found");
         else{
+
+            const item_id = item._id;
+
             // if cart exists for the user
             let itemIndex = cart.items.findIndex(p => item_id == productId);
 
@@ -106,7 +109,8 @@ module.exports.update_cart_item = async (req, res) => {
                 cart.items[itemIndex] = productItem;
             }
             cart.subtotal = cart.items.reduce((sum, item) => sum + item.sell_price * item.quantity,0);
-            cart = await cart.save();
+
+          cart = await cart.save();
             return res.status(201).send(cart);
         }     
     }
