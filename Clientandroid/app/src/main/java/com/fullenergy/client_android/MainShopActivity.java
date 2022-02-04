@@ -68,9 +68,17 @@ public class MainShopActivity extends AppCompatActivity {
         TextView card_title;
         TextView card_description;
         TextView card_price;
+        Button card_button;
+        View view;
 
-        public ProductViewHolder(View item_dot_xmlView) {
-            super(item_dot_xmlView);
+
+        public ProductViewHolder(View itemView) {
+            super(itemView);
+            view = itemView;
+
+
+
+
         }
     }
 
@@ -162,7 +170,7 @@ public class MainShopActivity extends AppCompatActivity {
                                 RecyclerView rv = (RecyclerView)findViewById(R.id.shop_recyclerview);
 
                                 LinearLayoutManager llm = new LinearLayoutManager(MainShopActivity.this);
-                                llm.setOrientation(LinearLayoutManager.HORIZONTAL);
+                                llm.setOrientation(LinearLayoutManager.VERTICAL);
                                 rv.setLayoutManager(llm);
 
 
@@ -187,6 +195,8 @@ public class MainShopActivity extends AppCompatActivity {
                                     vh.card_title = (TextView) vh.itemView.findViewById(R.id.item_title);
                                     vh.card_description = (TextView) vh.itemView.findViewById(R.id.item_description);
                                     vh.card_price = (TextView) vh.itemView.findViewById(R.id.item_price);
+
+
                                     return vh;
                                 }
 
@@ -204,8 +214,7 @@ public class MainShopActivity extends AppCompatActivity {
 
                                     holder.card_description.setText(description + "...");
                                     holder.card_price.setText("€" + price);
-
-                                    /////
+                                      /////
 
 
 

@@ -14,8 +14,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/shop_recyclerview"
-            android:layout_width="375dp"
-            android:layout_height="227dp"
+            android:layout_width="363dp"
+            android:layout_height="417dp"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,12 +48,14 @@
             android:id="@+id/shop_back_to_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="96dp"
             android:backgroundTint="@color/BlueSapphire"
             android:text="Go to Main"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.569"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/shop_recyclerview" />
+            app:layout_constraintTop_toBottomOf="@+id/shop_recyclerview"
+            app:layout_constraintVertical_bias="0.298" />
 
         <SearchView
             android:id="@+id/searchView"

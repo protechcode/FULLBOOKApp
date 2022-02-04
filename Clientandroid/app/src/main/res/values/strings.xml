@@ -15,4 +15,10 @@
     <string name="login_password_2_hint">******</string>
     <string name="login_button_2_text">Go to Register</string>
     <string name="login_button_3_text">Main Activity</string>
+    <string name="go_to_shopactivity_text">Go to ShopActivity</string>
+    <string name="full_energy_logo">full-energy-logo</string>
+    <string name="title_activity_main_shop2">MainShopActivity2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

@@ -84,13 +84,25 @@ public class MainActivity extends AppCompatActivity {
 
         setUpUI();
         setUpListeners();
+        int timeout = 3000; // make the activity visible for 4 seconds
+
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+
+            @Override
+            public void run() {
+                finish();
+                Intent Login = new Intent(MainActivity.this, MainShopActivity.class);
+                startActivity(Login);
+            }
+        }, timeout);
 
 
 
 
     }
     public void setUpUI(){
-        receiver = findViewById(R.id.main_receiver);
+        //receiver = findViewById(R.id.main_receiver);
         Button_1 = findViewById(R.id.main_button_1);
         Button_2 = findViewById(R.id.main_button_2);
         Button_3 = findViewById(R.id.main_button_3);
