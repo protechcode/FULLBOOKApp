@@ -40,7 +40,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/searchView" />
+                app:layout_constraintTop_toBottomOf="@+id/shop_searchView" />
 
             <ImageView
                 android:id="@+id/imageView"
@@ -52,7 +52,7 @@
                 app:srcCompat="@drawable/full_energy_logo" />
 
             <Button
-                android:id="@+id/shop_back_to_main"
+                android:id="@+id/shop_button_to_web"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/BlueSapphire"
@@ -65,7 +65,7 @@
                 app:layout_constraintVertical_bias="0.298" />
 
             <SearchView
-                android:id="@+id/searchView"
+                android:id="@+id/shop_searchView"
                 android:layout_width="367dp"
                 android:layout_height="49dp"
                 app:layout_constraintEnd_toEndOf="parent"

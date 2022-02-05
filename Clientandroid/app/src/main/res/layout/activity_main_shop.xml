@@ -18,23 +18,13 @@
             android:layout_width="363dp"
             android:layout_height="417dp"
 
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="136dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView">
+            app:layout_constraintTop_toBottomOf="@+id/imageView">
 
         </androidx.recyclerview.widget.RecyclerView>
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="312dp"
-            android:layout_height="25dp"
-            android:text="Here you see the Products!"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -46,11 +36,11 @@
             app:srcCompat="@drawable/full_energy_logo" />
 
         <Button
-            android:id="@+id/shop_back_to_main"
+            android:id="@+id/shop_button_to_web"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/BlueSapphire"
-            android:text="Go to Main"
+            android:text="Go to web"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.569"
@@ -58,13 +48,31 @@
             app:layout_constraintTop_toBottomOf="@+id/shop_recyclerview2"
             app:layout_constraintVertical_bias="0.298" />
 
-        <SearchView
-            android:id="@+id/searchView"
-            android:layout_width="367dp"
-            android:layout_height="49dp"
+        <Button
+            android:id="@+id/shop_button_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/RussianViolet"
+            android:text="Register"
+            app:layout_constraintBottom_toTopOf="@+id/shop_recyclerview2"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.126"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.427" />
+
+        <Button
+            android:id="@+id/shop_button_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/RussianViolet"
+            android:text="Login"
+            app:layout_constraintBottom_toTopOf="@+id/shop_recyclerview2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.699"
+            app:layout_constraintStart_toEndOf="@+id/shop_button_register"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.427" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,34 +26,36 @@
 
         <TextView
             android:id="@+id/pop_up_price"
-            android:layout_width="112dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="28dp"
+            android:layout_width="119dp"
+            android:layout_height="75dp"
             android:textColor="@color/RussianViolet"
-            android:textSize="24sp"
+            android:textSize="35sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.344"
-            app:layout_constraintStart_toEndOf="@+id/pop_up_image"
-            app:layout_constraintTop_toBottomOf="@+id/pop_up_title" />
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/ratingBar"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+            app:layout_constraintVertical_bias="0.384" />
 
         <TextView
             android:id="@+id/pop_up_category"
             android:layout_width="175dp"
             android:layout_height="46dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
             android:text="Category"
+            android:textAlignment="viewStart"
             android:textColor="@color/Xiketic"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pop_up_image" />
 
         <ImageView
             android:id="@+id/pop_up_image"
-            android:layout_width="189dp"
-            android:layout_height="154dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="24dp"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pop_up_title" />
 
@@ -81,21 +83,21 @@
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.085"
+            app:layout_constraintHorizontal_bias="0.023"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button2"
-            app:layout_constraintVertical_bias="0.061" />
+            app:layout_constraintVertical_bias="0.87" />
 
         <ScrollView
             android:id="@+id/scrollView2"
             android:layout_width="177dp"
             android:layout_height="149dp"
-            android:layout_marginBottom="316dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.939"
+            app:layout_constraintHorizontal_bias="0.931"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pop_up_price">
+            app:layout_constraintTop_toBottomOf="@+id/pop_up_image"
+            app:layout_constraintVertical_bias="0.117">
 
             <TextView
                 android:id="@+id/pop_up_description"

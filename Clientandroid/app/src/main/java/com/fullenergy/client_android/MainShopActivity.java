@@ -2,6 +2,7 @@ package com.fullenergy.client_android;
 
 import android.content.Intent;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -94,17 +95,56 @@ public class MainShopActivity extends AppCompatActivity {
     }
 
     public void setUpButton(){
-        Button backToMain = (Button) findViewById(R.id.shop_back_to_main);
-        backToMain.setOnClickListener( new View.OnClickListener() {
+        Button toTheWeb = (Button) findViewById(R.id.shop_button_to_web);
+        toTheWeb.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                goToMain();
+                goToWeb();
             }
         });
+        Button toTheLogin = (Button) findViewById(R.id.shop_button_login);
+        toTheLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                int timeout = 500; // make the activity visible for 4 seconds
+
+                Timer timer = new Timer();
+                timer.schedule(new TimerTask() {
+
+                    @Override
+                    public void run() {
+                        finish();
+                        Intent Login = new Intent(MainShopActivity.this, LoginActivity.class);
+                        startActivity(Login);
+                    }
+                }, timeout);
+            }
+        });
+
+
+        Button toTheRegister = findViewById(R.id.shop_button_register);
+        toTheRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                int timeout = 500; // make the activity visible for 4 seconds
+
+                Timer timer = new Timer();
+                timer.schedule(new TimerTask() {
+
+                    @Override
+                    public void run() {
+                        finish();
+                        Intent register = new Intent(MainShopActivity.this, RegisterActivity.class);
+                        startActivity(register);
+                    }
+                }, timeout);
+            }
+        });
+
     }
 
-    private void goToMain() {
+    private void goToWeb() {
         int timeout = 500; // make the activity visible for 4 seconds
 
         Timer timer = new Timer();
@@ -113,8 +153,8 @@ public class MainShopActivity extends AppCompatActivity {
             @Override
             public void run() {
                 finish();
-                Intent mainAct = new Intent(MainShopActivity.this, MainActivity.class);
-                startActivity(mainAct);
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
+                startActivity(browserIntent);
             }
         }, timeout);
     }
@@ -128,6 +168,8 @@ public class MainShopActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_shop);
+
+
         setUpButton();
 
         try {
@@ -238,7 +280,7 @@ public class MainShopActivity extends AppCompatActivity {
                                             ((TextView)popupWindow.getContentView().findViewById(R.id.pop_up_title)).setText(title);
                                             ((TextView)popupWindow.getContentView().findViewById(R.id.pop_up_description)).setText(description);
                                             ((TextView)popupWindow.getContentView().findViewById(R.id.pop_up_category)).setText(category);
-                                            ((TextView)popupWindow.getContentView().findViewById(R.id.pop_up_price)).setText(price);
+                                            ((TextView)popupWindow.getContentView().findViewById(R.id.pop_up_price)).setText("€ "+price);
                                             Picasso.get().load(image_url_1).into((ImageView) popupWindow.getContentView().findViewById(R.id.pop_up_image));
 
                                             // show the popup window
