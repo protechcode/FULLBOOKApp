@@ -1,0 +1,12 @@
+{
+    "userName1":"cristian",
+    "password_userName1":"cristian",
+    "userName2":"salma",
+    "password_userName2":"salma",
+    "userName3":"mario",
+    "password_userName3":"mario",
+    "dbURI_Example":"mongodb+srv://<username1>:<password_userName1>@cluster0.a36mj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "dbURI":"mongodb+srv://cristian:cristian@cluster0.a36mj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "jwtsecret": "your jwt secret",
+    "StripeAPIKey":"sk_test_51KMd3nFyo4UZC2iSLQzq3gDy2yxI82obMutABZRVoRr8lxRgTqzo2IcuvejIgWhZifiTpmI5F4O1x6TgA8IOYugd00ONeVX44E"
+}

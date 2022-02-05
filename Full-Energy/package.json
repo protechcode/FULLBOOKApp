@@ -1,0 +1,38 @@
+{
+  "name": "full-energy",
+  "version": "1.0.0",
+  "description": "This is a backend for the Full-Energy project, For DB in this case we will be using MondoDB, but we intend for this backend to serve as a template for different types of E-commerce Multiplatform App.",
+  "main": "server.js",
+  "scripts": {
+    "start": "npm server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\"\"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/protechcode/FULLBOOKApp.git"
+  },
+  "keywords": [
+    "MERN-Stack"
+  ],
+  "author": "Salma Djadi, Cristian Romero and Mario Rubio.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/protechcode/FULLBOOKApp/issues"
+  },
+  "homepage": "https://github.com/protechcode/FULLBOOKApp#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "concurrently": "^7.0.0",
+    "config": "^3.3.7",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.1.8",
+    "nodemon": "^2.0.15",
+    "stripe": "^8.200.0",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {}
+}
