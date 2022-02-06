@@ -99,6 +99,7 @@ public class LoginActivity extends AppCompatActivity {
         String key_email = "email";
         String key_password= "password";
         //Values
+        checkUserData();
         String value_email = email.getText().toString();
         String value_password= password.getText().toString();
         //We will use HashMap as equivalent to [{"key":"value"}]
@@ -129,7 +130,7 @@ public class LoginActivity extends AppCompatActivity {
                 gsonDecode.toJson(usrNTokn);
                 Log.i("GSONDECODE:", gsonDecode.toJson(usrNTokn));
 
-
+                goToMain();
             }
 
             @Override
