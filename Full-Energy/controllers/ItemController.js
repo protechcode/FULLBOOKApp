@@ -1,7 +1,7 @@
 const Item = require('../models/Item_model');
 
 module.exports.get_items = (req,res) => {
-    Item.find().sort({created_date:-1}).then(items => res.json({items:items}));
+    Item.find().sort({created_date:-1}).then(items => res.json(items));
 }
 
 module.exports.get_item = (req,res) => {

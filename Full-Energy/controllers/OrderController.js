@@ -10,39 +10,35 @@ module.exports.hello = (req,res) => {
 }
 module.exports.get_orders = async (req,res) =>
 {
-    const userId = req.params.id;
-    Order.find({userId : userId}).sort({date:-1}).then(orders => res.json(orders));
-}
-module.exports.checkout = async (req,res) =>{
-    try{
-        const userId = req.params.id;
-        const {source} = req.body;
-        let cart = await Cart.find({user_id: userId});
-        let user = await User.find({_id: userId});
-        const email = user.email;
-    if(cart){
-        const charge = await stripe.charges.create({
-            amount: cart.subtotal,
-            currency: 'eur',
-            source:source,
-            receipt_email: email
-        })
-        if(!charge) throw Error('Payment Declined!');
-        if(charge){
-            const order = await Order.create({
-                userId,
-                items: cart.items,
-                total: cart.subtotal //+ x/100 x= Number for percentage, tax, etc its commented jus to try later
-            });
-            const data = await Cart.findByIdAndDelete({_id:cart.id});
-            return res.status(201).send(order);
-        }
+    Order.find().then(orders => res.json({orders: orders}));
 
-    } else{
-        res.status(500).send("You dont have items in your cart");
-    }   
-}catch(error){
-        console.log(error);
-        res.status(500).send("Something went wrong in Payment, Check Everyting, and the error")
-    }
+    /* const userId = req.params.id;
+    Order.find({userId : userId}).sort({date:-1}).then(orders => res.json(orders)); */
+}
+module.exports.create_order = async (req, res) =>{
+    const userId = req.body.user_id;
+    const cartId = req.body.cart_id;
+    const cartInfo = await Cart.find({_id : cartId}).then(cart => cart[0]).catch(e=>console.log(e))
+    const items = cartInfo.items;
+    const total = cartInfo.subtotal;
+    const card = req.body.card_type
+    const paymentMethod = req.body.payment_method;
+
+    const order = new Order({
+        user_id: userId,
+        items: items,
+        payment_method: paymentMethod,
+        card_type: card,
+        total: total,
+
+    })
+    order.save()
+    const cartUpdated = await Cart.findByIdAndUpdate({_id: cartId},{purchased: true}).then(cartUpdated=>cartUpdated).catch(e=>console.log(e))
+    return res.status(201).json({
+        message: order._id +" New Order Created, the payment will be processed, and an email from your bank will confirm the purchase",
+        order: order,
+        purchased: cartUpdated.purchased
+    })
+
+ 
 }
