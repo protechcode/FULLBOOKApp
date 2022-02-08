@@ -1,6 +1,6 @@
 import { Component, Fragment } from 'react';
 import {
-    Card, CardText, CardBody, Button, Alert, Container, Modal,
+    Card, CardText, CardBody, CardTitle,Button, Alert, Container, Modal, 
     ModalHeader,
     ModalBody,
 } from 'reactstrap';
@@ -148,7 +148,14 @@ class CartModal extends Component {
                                                     <h2 class="font-semibold text-2xl">SubTotal Price</h2>
                                                     <h2 class="font-semibold text-2xl">{this.props.cart.cart.subtotal.toFixed(2)} €</h2>
                                                 </div>
-                                                <Button color="success" onClick={this.bill}>Confirm</Button>
+                                                <div class="col-md-12">
+                        
+                                                   <Checkout
+                                                       user={user._id}
+                                                       amount={this.props.cart.cart.bill}
+                                                       checkout={this.props.checkout}
+                                                   />                   
+                                              </div>
                                             </div>
                                         </CardBody>
                                     </Card>

@@ -9,13 +9,16 @@ const OrderSchema = new Schema({
         item_id: {
             type: String,
         },
-        title: String,
+        title: {
+            type: String,
+        },
         quantity: {
             type: Number,
             required: true,
             min: [1, 'Quantity can not be less then 1.']
         },
-        price: Number
+        price: {
+            type: Number}
     }],
     total: {
         type: Number,

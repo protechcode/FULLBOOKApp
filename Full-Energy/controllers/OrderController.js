@@ -30,7 +30,7 @@ module.exports.checkout = async (req,res) =>{
         if(!charge) throw Error('Payment Declined!');
         if(charge){
             const order = await Order.create({
-                userId,
+                user_id: userId,
                 items: cart.items,
                 total: cart.subtotal //+ x/100 x= Number for percentage, tax, etc its commented jus to try later
             });
