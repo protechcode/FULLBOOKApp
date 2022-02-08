@@ -1,6 +1,6 @@
 import { Component, Fragment } from 'react';
 import {
-    Card, CardText, CardBody, CardTitle,Button, Alert, Container, Modal, 
+    Card, CardText, CardBody, Alert, Container, Modal, 
     ModalHeader,
     ModalBody,
 } from 'reactstrap';
@@ -116,7 +116,7 @@ class CartModal extends Component {
                                                                     </div>
                                                                 </div>
                                                                 <div class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">
-                                                                    <CardText>
+                                                                    <CardText style={{...qtyBox}}>
                                                                     <p style={{...qtyBtn, border:"1px solid red", color: "Red"}} onClick={() => {if (item.quantity>1){this.onUpdateQuantity(user._id, item.item_id, item.quantity - 1)} }}>
                                                                                              -1
                                                                                            </p>
