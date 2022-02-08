@@ -17,13 +17,24 @@ module.exports.get_orders = async (req,res) =>
 }
 module.exports.create_order = async (req, res) =>{
     const userId = req.body.user_id;
+    const userAddr1 = req.body.address_1;
+    const userAddr2 = req.body.address_2;
+    const userPhone = req.body.phone;
     const cartId = req.body.cart_id;
     const cartInfo = await Cart.find({_id : cartId}).then(cart => cart[0]).catch(e=>console.log(e))
     const items = cartInfo.items;
     const total = cartInfo.subtotal;
     const card = req.body.card_type
     const paymentMethod = req.body.payment_method;
-
+    if(!userAddr2){
+        const userUpdate = await User.findByIdAndUpdate({_id: userId},{phone: userPhone, address_1: userAddr1})
+    } else if(userAddr2 !== null && userAddr2 !== ""){
+        const userUpdate = await User.findByIdAndUpdate({_id: userId},{phone: userPhone, address_1: userAddr1, address_2:userAddr2})
+   
+    }else{
+        res.status(404).json({message:"Must provide a valid address for the product to be sent"})
+    }
+    const confirmationOfUserUpdate= await User.findById({_id:userId});
     const order = new Order({
         user_id: userId,
         items: items,
@@ -37,7 +48,8 @@ module.exports.create_order = async (req, res) =>{
     return res.status(201).json({
         message: order._id +" New Order Created, the payment will be processed, and an email from your bank will confirm the purchase",
         order: order,
-        purchased: cartUpdated.purchased
+        purchased: cartUpdated.purchased,
+        user: confirmationOfUserUpdate
     })
 
  

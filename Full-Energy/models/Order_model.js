@@ -27,7 +27,7 @@ const OrderSchema = new Schema({
         type: String,
         default: "Credit Card"
     },
-    card_type:{
+    card_company:{
         type:String,
         default:"Visa"
     },
