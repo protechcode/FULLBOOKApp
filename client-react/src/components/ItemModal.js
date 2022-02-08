@@ -6,7 +6,6 @@ import {
     ModalBody
 
 } from 'reactstrap';
-import swal from 'sweetalert';
 
 import { addToCart } from '../actions/cartActions';
 import { connect } from 'react-redux';
@@ -30,10 +29,7 @@ class ItemModal extends Component {
 
     onAddToCart = async (id, productId) => {
         await this.props.addToCart(id, productId, 1);
-        swal({
-            title: "Item added to Cart!",
-            icon: "success",
-          });
+        alert('Item added to Cart');
     }
 
     toggle = () => {

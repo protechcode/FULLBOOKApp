@@ -15,6 +15,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/authActions';
 import { clearErrors } from '../../actions/errorActions';
+import GoogleLogin from 'react-google-login';
+import { GoogleLogout } from 'react-google-login';
+const clientId = "712390708441-alvmm06tc0v3e5940jgtctkl9qhclp8v.apps.googleusercontent.com";
+
+
 
 class LoginModal extends Component {
     state = {
@@ -72,8 +77,49 @@ class LoginModal extends Component {
         // Attempt to login
         this.props.login(user);
     }
+    onSuccess = (res) => {
+        console.log('Login Success: currentUser:', res.profileObj);
+        alert(
+          `Logged in successfully welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
+        );
+        this.refreshTokenSetup(res);
+      };
+
+    onFailure = (res) => {
+        console.log('Login failed: res:', res);
+        alert(
+          `Failed to login. 😢 Please talkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk with Cristian`
+        );
+      };
+    
+    refreshTokenSetup = (res) => {
+        // Timing to renew access token
+        let refreshTiming = (res.tokenObj.expires_in || 3600 - 5 * 60) * 1000;
+      
+        const refreshToken = async () => {
+          const newAuthRes = await res.reloadAuthResponse();
+          refreshTiming = (newAuthRes.expires_in || 3600 - 5 * 60) * 1000;
+          console.log('newAuthRes:', newAuthRes);
+          // saveUserToken(newAuthRes.access_token);  <-- save new token
+          localStorage.setItem('authToken', newAuthRes.id_token);
+      
+          // Setup the other timer after the first one
+          setTimeout(refreshToken, refreshTiming);
+        };
+      
+        // Setup first refresh timer
+        setTimeout(refreshToken, refreshTiming);
+      };
+
+      
+        
+        
+          
+
+
 
     render(){
+
         return(
             <div className="container">
             {  /*  <Button color="success" className="btn btn-sm"><NavLink onClick={this.toggle} href="#"><span className="text-dark"><b>Login</b></span></NavLink></Button>
@@ -114,6 +160,14 @@ class LoginModal extends Component {
                                     style={{marginTop: '2rem'}}
                                     block
                                 >Login</Button>
+                               <GoogleLogin
+                                    clientId={clientId}
+                                    buttonText="Log in with Google"
+                                    onSuccess={this.onSuccess}
+                                    onFailure={this.onFailure}
+                                    cookiePolicy={'single_host_origin'}
+                                />
+
                             </FormGroup>
                         </Form>
                     </ModalBody>
@@ -129,3 +183,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps,{login, clearErrors})(LoginModal);
+
+

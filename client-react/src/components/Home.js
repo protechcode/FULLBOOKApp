@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import AppNavbar from './AppNavbar';
-import {Button, Container } from 'reactstrap';
+import { Card, CardText, CardBody, CardTitle, CardSubtitle, Button, Container } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getItems } from '../actions/itemActions';
@@ -10,7 +10,6 @@ import BannerOneProduct from './BannerOneProduct';
 import Footer from './Footer';
 import BestService from './BestService';
 import Featured from './Featured';
-import swal from 'sweetalert';
 
 
 class Home extends Component {
@@ -29,17 +28,12 @@ class Home extends Component {
 
   onAddToCart = async (id, productId) => {
     await this.props.addToCart(id, productId, 1);
-    swal({
-      title: "Item added to Cart!",
-      icon: "success",
-    });  }
+    alert('Item added to Cart');
+  }
 
   render() {
-
-
     const { items } = this.props.item;
     const user = this.props.user;
-
     return (
       <div>
         <AppNavbar />
@@ -48,9 +42,7 @@ class Home extends Component {
           <BannerOneProduct />
           <div className="container px-5 py-24 mx-auto">
             <div className="flex flex-wrap -m-4">
-              { 
-             
-              items.map((item) => (
+              {items.map((item) => (
                 <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
                   <a className="block relative h-48 rounded overflow-hidden">
                     <img className="w-full h-full lg:max-w-2xl" src={item.image_1} alt="Catalogue-pana.svg" />
