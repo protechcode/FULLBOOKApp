@@ -6,12 +6,14 @@ import { connect } from 'react-redux';
 import { getItems } from '../actions/itemActions';
 import { addToCart } from '../actions/cartActions';
 import ItemModal from './ItemModal';
+import swal from 'sweetalert';
 
 class Home extends Component {
 
   componentDidMount() {
     this.props.getItems();
   }
+ 
 
   static propTypes = {
     getItems: PropTypes.func.isRequired,
@@ -23,11 +25,32 @@ class Home extends Component {
 
   onAddToCart = async (id, productId) => {
     await this.props.addToCart(id, productId, 1);
-    alert('Item added to Cart');
+    swal({
+      title: "Item added to Cart!",
+      icon: "success",
+    });
   }
+  filterItems = (items, query) => {
+      if (!query) {
+          return items;
+      }
+  
+      return items.filter((item) => {
+         
+       // const itemName = item.title.toLowerCase();
+        return (item.title.toLowerCase().includes(query) ||item.category_name.toLowerCase().includes(query) );
+    });
+  };
 
   render() {
     const { items } = this.props.item;
+
+    const { search } = window.location;
+    const query = new URLSearchParams(search).get('s');
+
+    const filteredItems = this.filterItems(items, query);
+    console.log(filteredItems);
+    
     const user = this.props.user;
     return (
       <div>
@@ -36,7 +59,8 @@ class Home extends Component {
 
           <div className="container px-5 py-24 mx-auto">
             <div className="flex flex-wrap -m-4">
-              {items.map((item) => (
+              {
+              filteredItems.map((item) => (
                 <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
                   <a className="block relative h-48 rounded overflow-hidden">
                     <img className="w-full h-full lg:max-w-2xl" src={item.image_1} alt="Catalogue-pana.svg" />

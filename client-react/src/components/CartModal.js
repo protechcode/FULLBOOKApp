@@ -1,6 +1,6 @@
 import { Component, Fragment } from 'react';
 import {
-    Card, CardText, CardBody, Button, Alert, Container, Modal,
+    Card, CardText, CardBody, Alert, Container, Modal, 
     ModalHeader,
     ModalBody,
 } from 'reactstrap';
@@ -112,16 +112,18 @@ class CartModal extends Component {
                                                                     <div class="flex flex-col justify-between ml-4 flex-grow">
                                                                         <span class="font-bold text-sm">{item.title}</span>
                                                                         <span class="text-red-500 text-xs">{item.category_name}</span>
+                                                                        <a href="#" class="font-semibold hover:text-red-500 text-gray-500 text-xs" onClick={this.onDeleteFromCart.bind(this, user._id, item._id)}>Remove</a>
                                                                     </div>
                                                                 </div>
-                                                                <div class="font-semibold text-center text-gray-600 text-xs uppercase w-2/5 text-center">
-                                                                    <CardText>
-                                                                        <a href="#" class="font-semibold hover:text-red-500 text-gray-500 text-xs" onClick={this.onDeleteFromCart.bind(this, user._id, item._id)}>Remove</a>
-                                                                        <p style={{...qtyBtn, border:"23px solid red", color: "red"}} onClick={() => {if (item.quantity>1){this.onUpdateQuantity(user._id, item.item_id, item.quantity - 1)} }}>
-                                                                            less</p>
+                                                                <div class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">
+                                                                    <CardText style={{...qtyBox}}>
+                                                                    <p style={{...qtyBtn, border:"1px solid red", color: "Red"}} onClick={() => {if (item.quantity>1){this.onUpdateQuantity(user._id, item.item_id, item.quantity - 1)} }}>
+                                                                                             -1
+                                                                                           </p>
                                                                         {item.quantity}
-                                                                        <p style={{...qtyBtn, border:"23px solid green", color: "green"}} onClick={() => this.onUpdateQuantity(user._id, item.item_id, item.quantity + 1)}>
-                                                                            more</p>
+                                                                        <p style={{...qtyBtn, border:"1px solid green", color: "green"}} onClick={() => this.onUpdateQuantity(user._id, item.item_id, item.quantity + 1)}>
+                                                                                        +1
+                                                                                    </p>
                                                                         </CardText>
                                                                 </div>
 
@@ -139,15 +141,21 @@ class CartModal extends Component {
                                                     <h1 class="font-semibold text-2xl">Cart Resume</h1>
                                                 </div>
                                                 <div class="flex justify-between border-b pb-8">
-                                                    <h6 class="font-semibold text-s">Diferent Products</h6>
-                                                    <h6 class="font-semibold text-s">{this.props.cart.cart.items.length}</h6>
-                                                </div> 
-                                                
-                                                <div class="flex justify-between border-b pb-8">
-                                                    <h6 class="font-semibold text-s">SubTotal Price</h6>
-                                                    <h2 class="font-semibold text-success">{this.props.cart.cart.subtotal.toFixed(2)} €</h2>
+                                                    <h2 class="font-semibold text-2xl">Total Products</h2>
+                                                    <h2 class="font-semibold text-2xl">{this.props.cart.cart.items.length}</h2>
                                                 </div>
-                                                <Button color="success" onClick={this.bill}>Confirm</Button>
+                                                <div class="flex justify-between border-b pb-8">
+                                                    <h2 class="font-semibold text-2xl">SubTotal Price</h2>
+                                                    <h2 class="font-semibold text-2xl">{this.props.cart.cart.subtotal.toFixed(2)} €</h2>
+                                                </div>
+                                                <div class="col-md-12">
+                        
+                                                   <Checkout
+                                                       user={user._id}
+                                                       amount={this.props.cart.cart.bill}
+                                                       checkout={this.props.checkout}
+                                                   />                   
+                                              </div>
                                             </div>
                                         </CardBody>
                                     </Card>
