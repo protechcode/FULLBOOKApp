@@ -6,20 +6,31 @@ const OrderSchema = new Schema({
         type: String,
     },
     items: [{
-        item_id: {
-            type: String,
-        },
-        title: {
-            type: String,
+        title:{
+            type: String
         },
         quantity: {
             type: Number,
-            required: true,
-            min: [1, 'Quantity can not be less then 1.']
+            required: true, 
+            min: [1, 'Quantity can not be less than 1'],
+            default:1
         },
-        price: {
-            type: Number}
+        sell_price:{
+            type: Number,
+        },
+        category_name:{
+            type:String
+        },
+       
     }],
+    payment_method:{
+        type: String,
+        default: "Credit Card"
+    },
+    card_company:{
+        type:String,
+        default:"Visa"
+    },
     total: {
         type: Number,
         required: true
