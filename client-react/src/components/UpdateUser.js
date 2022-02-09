@@ -7,7 +7,6 @@ import {
 
 } from 'reactstrap';
 import swal from 'sweetalert';
-import { updateUser } from '../actions/authActions'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import "./Profile.css";
@@ -29,7 +28,6 @@ class UpdateUser extends Component {
         isAuthenticated: PropTypes.bool,
         user: PropTypes.object.isRequired,
         auth: PropTypes.object.isRequired,
-        updateUser: PropTypes.func.isRequired
 
     }
 
@@ -126,4 +124,4 @@ const mapStateToProps = (state) => ({
 
 })
 
-export default connect(mapStateToProps, {updateUser})(UpdateUser);
+export default connect(mapStateToProps, )(UpdateUser);
