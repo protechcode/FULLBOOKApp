@@ -53,7 +53,8 @@ const UserSchema = new Schema({
     },
     image_url: {
         type: String,
-        required: false,
+        default: "https://img.icons8.com/bubbles/100/000000/user.png",
+        required: false
     },
     has_cart:{
         type: Boolean,

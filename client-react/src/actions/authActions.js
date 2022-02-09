@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { returnErrors } from './errorActions';
-import { USER_LOADING, USER_LOADED, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT_SUCCESS, REGISTER_SUCCESS, REGISTER_FAIL} from './types';
+import { UPDATE_USER,USER_LOADING, USER_LOADED, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT_SUCCESS, REGISTER_SUCCESS, REGISTER_FAIL} from './types';
 
 export const loadUser = () => (dispatch, getState) => {
     // User loading
@@ -71,6 +71,14 @@ export const logout = () => {
     return {
         type: LOGOUT_SUCCESS
     }
+}
+export const updateUser = (id, user) => (dispatch) => {
+    axios.put(`http://localhost:4000/api/users/${id}`, user)
+        .then(res => dispatch({
+            type: UPDATE_USER,
+            payload: Promise.all([id, res.data])
+        }))
+        .catch(err => dispatch(returnErrors(err.response.data, err.response.status)))
 }
 
 
