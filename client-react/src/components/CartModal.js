@@ -141,7 +141,7 @@ class CartModal extends Component {
                                                     <h1 class="font-semibold text-2xl">Cart Resume</h1>
                                                 </div>
                                                 <div class="flex justify-between border-b pb-8">
-                                                    <h2 class="font-semibold text-2xl">Total Products</h2>
+                                                    <h2 class="font-semibold text-2xl">Diferent Items</h2>
                                                     <h2 class="font-semibold text-2xl">{this.props.cart.cart.items.length}</h2>
                                                 </div>
                                                 <div class="flex justify-between border-b pb-8">

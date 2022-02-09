@@ -4,7 +4,7 @@ function Featrued() {
             <section class="bg-white border-b py-8">
                 <div class="container mx-auto flex flex-wrap pt-4 pb-12">
                     <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-                        Title
+                        Next Features
                     </h1>
                     <div class="w-full mb-4">
                         <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
@@ -13,20 +13,20 @@ function Featrued() {
                         <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
                             <a href="#" class="flex flex-wrap no-underline hover:no-underline">
                                 <p class="w-full text-gray-600 text-xs md:text-sm px-6">
-                                    xGETTING STARTED
+                                    COURRIER & DELIVERY
                                 </p>
                                 <div class="w-full font-bold text-xl text-gray-800 px-6">
-                                    Lorem ipsum dolor sit amet.
+                                    Shipping with Getir or Glovo
                                 </div>
                                 <p class="text-gray-800 text-base px-6 mb-5">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
+                                    Finding the best solutions in time also the most eco way to reciver your purchase at home!!
                                 </p>
                             </a>
                         </div>
                         <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
                             <div class="flex items-center justify-start">
                                 <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                                    Action
+                                    Coming..
                                 </button>
                             </div>
                         </div>
@@ -35,13 +35,14 @@ function Featrued() {
                         <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
                             <a href="#" class="flex flex-wrap no-underline hover:no-underline">
                                 <p class="w-full text-gray-600 text-xs md:text-sm px-6">
-                                    xGETTING STARTED
+                                     RETURNS OF PURCHASE
                                 </p>
                                 <div class="w-full font-bold text-xl text-gray-800 px-6">
-                                    Lorem ipsum dolor sit amet.
+                                    Ever when something is wrong.
                                 </div>
                                 <p class="text-gray-800 text-base px-6 mb-5">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
+                                    When the peopole are behind the place that you trust....
+                                    Consult our Policy of Devolutions
                                 </p>
                             </a>
                         </div>
@@ -57,20 +58,20 @@ function Featrued() {
                         <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
                             <a href="#" class="flex flex-wrap no-underline hover:no-underline">
                                 <p class="w-full text-gray-600 text-xs md:text-sm px-6">
-                                    xGETTING STARTED
+                                    EVER OPEN
                                 </p>
                                 <div class="w-full font-bold text-xl text-gray-800 px-6">
-                                    Lorem ipsum dolor sit amet.
+                                    24/7
                                 </div>
                                 <p class="text-gray-800 text-base px-6 mb-5">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
+                                        When ever you need...
                                 </p>
                             </a>
                         </div>
                         <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
                             <div class="flex items-center justify-end">
                                 <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                                    Action
+                                    Contact
                                 </button>
                             </div>
                         </div>
