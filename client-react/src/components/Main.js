@@ -2,10 +2,12 @@ import { Component } from 'react';
 import Home from './Home';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-//import Cart from './Cart';
+import UpdateUser from './admin/usersCRUD/UpdateUser';
 import Orders from './Order';
+import Admin from './admin/Admin';
 import Shop from './Shop';
 import Profile from './Profile';
+import AddUser from './admin/usersCRUD/addUser';
 
 class Main extends Component {
     render(){
@@ -24,6 +26,15 @@ class Main extends Component {
                     <Route path='/orders'>
                         <Orders/>
                     </Route>
+                    <Route path='/admin'>
+                        <Admin/>
+                    </Route> 
+                    <Route path='/adduser'>
+                        <AddUser/>
+                    </Route> 
+                    <Route path='/upduser/:id'>
+                        <UpdateUser/>
+                    </Route> 
                     <Redirect to='/home'/>
                 </Switch>
             </div>
@@ -32,3 +43,4 @@ class Main extends Component {
 }
 
 export default withRouter(connect()(Main));
+
