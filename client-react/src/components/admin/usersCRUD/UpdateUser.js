@@ -1,7 +1,8 @@
 import { React, useState } from 'react'
 import axios from 'axios';
 import { Form, FormGroup, FormText, Col, Input, Label } from 'reactstrap'
-import { withRouter, Redirect } from 'react-router-dom'
+import { withRouter, Redirect, Link } from 'react-router-dom'
+
 
 
 function UpdateUser(props) {
@@ -23,7 +24,7 @@ function UpdateUser(props) {
         const is_admin = data.is_admin;
         const image_url = data.image_url;
 
-        const user = { id: id, name: name, surname: surname, email: email, password: password, phone: phone, address_1: address_1, address_2: address_2, image_url: image_url }
+        const user = { id: id, name: name, surname: surname, email: email, password: password, phone: phone, address_1: address_1, address_2: address_2, image_url: image_url, is_admin:is_admin }
         if(user){
             setUserInfo(user)
         }
@@ -40,7 +41,7 @@ function UpdateUser(props) {
             phone: user.phone,
             address_: user.address_1,
             address_2: user.address_2,
-            //is_admin: user.is_admin,
+            is_admin: user.is_admin,
             image_url: user.image_url
 
         }).then(res => {
@@ -58,12 +59,12 @@ function UpdateUser(props) {
         const phone = e.target.phone.value;
         const address_1 = e.target.address_1.value;
         const address_2 = e.target.address_2.value;
-        //const is_admin = e.target.is_admin.value;
+        const is_admin = e.target.is_admin.value;
         const image_url = e.target.image_url.value;
 
-        const user = { id: id, name: name, surname: surname, email: email, password: password, phone: phone, address_1: address_1, address_2: address_2, image_url: image_url }
+        const user = { id: id, name: name, surname: surname, email: email, password: password, phone: phone, address_1: address_1, address_2: address_2, image_url: image_url, is_admin: is_admin }
         //console.log("onSubmit: ", user);
-        //update_user(id, user);
+        update_user(id, user);
     }
     if (redirect === false) {
         return (
@@ -130,6 +131,11 @@ function UpdateUser(props) {
                     <button onClick={()=>console.log("Clicked")} style={{ background: "#5DE9CD", height: "45px", width: "165px", borderRadius: "5px", boxShadow: "3px 3px #0F070D" }}>
                         Register this Changes
                     </button>
+                    <Link to={"/admin"}>
+                        <button onClick={() => console.log("Clicked")} style={{marginLeft:"5px", background: "#5DE9CD", height: "45px", width: "165px", borderRadius: "5px", boxShadow: "3px 3px #0F070D" }}>
+                            Cancel this Changes
+                        </button>
+                    </Link>
 
                 </Form>
 

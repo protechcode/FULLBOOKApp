@@ -89,7 +89,7 @@ function ListOfUsers() {
                                    </Link>
                                     
                                   
-                                   <button onClick={()=>{delete_user(_id); window.location.reload(false)}}type="button"style={{background:"#5DE9CD", height:"45px",  width:"165px", borderRadius:"5px",  boxShadow: "3px 3px #0F070D" }}>
+                                   <button onClick={async ()=>{ await delete_user(_id).then(res=>window.location.reload(false))}}type="button"style={{background:"#5DE9CD", height:"45px",  width:"165px", borderRadius:"5px",  boxShadow: "3px 3px #0F070D" }}>
                                         Button To delete
                                     </button>
                                   

@@ -55,10 +55,13 @@ export const login = ({email, password}) => dispatch => {
     const body = JSON.stringify({email, password});
 
     axios.post('http://localhost:4000/api/login',body,config)
-        .then(res => dispatch({
+        .then(res => {
+            dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data
-        }))
+            });
+            console.log(res.data.user)
+    })
         .catch(err => {
             dispatch(returnErrors(err.response.data, err.response.status, 'LOGIN_FAIL'));
             dispatch({

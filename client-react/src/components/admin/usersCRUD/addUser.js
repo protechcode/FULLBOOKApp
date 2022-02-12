@@ -20,7 +20,7 @@ function AddUser(){
             image_url: user.image_url
 
             
-        }).then( window.location.reload(false));
+        }).then(res=>console.log(res.data));
     
       }
     function onSubmit(e){

@@ -41,7 +41,8 @@ module.exports.signup = (req,res) => {
                                     user: {
                                         id: user._id,
                                         name: user.name,
-                                        email: user.email
+                                        email: user.email,
+                                        
                                     }
                                 });
                             }
@@ -77,7 +78,7 @@ module.exports.login = (req,res) => {
                                 user: {
                                     id: user._id,
                                     name: user.name,
-                                    email: user.email
+                                    email: user.email,is_admin: user.is_admin
                                 }
                             });
                         }
