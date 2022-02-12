@@ -21,27 +21,6 @@ function ListOfUsers() {
         await axios.get('http://localhost:4000/api/users')
             .then(res => {
                 const data = res.data;
-                //Trying to assign res.data to single user objects
-                /* for(var i =0 ; i<data.length; i++){
-                    const name =data[i].name;
-                    const surname= data[i].surname;
-                    const email = data[i].email;
-                    const phone = data[i].phone;
-                    const address_1=data[i].address_1;
-                    const address_2= data[i].address_2;
-                    const is_admin=data[i].is_admin;
-                    const image_url= data[i].image_url;
-                    const user={
-                        name:name, 
-                        surname:surname,
-                        email:email,
-                        phone:phone,
-                        address_1:address_1,
-                        address_2:address_2,
-                        is_admin:is_admin,
-                        image_url:image_url
-
-                    } */
                 if (data) {
                     console.log(data)
                     setUsers(data)

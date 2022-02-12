@@ -8,7 +8,9 @@ import Admin from './admin/Admin';
 import Shop from './Shop';
 import Profile from './Profile';
 import AddUser from './admin/usersCRUD/addUser';
-
+import ItemList from './admin/itemsCRUD/ItemListComponent';
+import ItemsCrud from './admin/itemsCRUD/ItemsCrudComponent';
+import UpdateItem from './admin/itemsCRUD/UpdateItemComponent';
 class Main extends Component {
     render(){
         return (
@@ -34,6 +36,12 @@ class Main extends Component {
                     </Route> 
                     <Route path='/upduser/:id'>
                         <UpdateUser/>
+                    </Route> 
+                    <Route path='/upditem/:id'>
+                        <UpdateItem/>
+                    </Route> 
+                    <Route path='/itemscrud'>
+                        <ItemsCrud/>
                     </Route> 
                     <Redirect to='/home'/>
                 </Switch>

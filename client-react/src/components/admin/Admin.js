@@ -4,6 +4,7 @@ import AppNavbar from '../AppNavbar';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import UsersCrud from './usersCRUD/UsersCRUDComponent';
+import ItemsCrud from './itemsCRUD/ItemsCrudComponent';
 
 import ListOfUsers from './usersCRUD/listOfUsers'
 import { List,Card,CardBody,CardTitle, CardSubtitle, CardText, Button, Accordion, AccordionBody, AccordionItem, AccordionHeader} from 'reactstrap'
@@ -16,16 +17,17 @@ const BASE_URL = "http://localhost:4000/api"
 
 function Admin() {
     
-    const [toggleQuestion, setToggequestion] = useState(1);//1 is the default id to be opened by default
+    const [toggleQuestion, setToggequestion] = useState(0);//1 is the default id to be opened by default
     
     
     
     return (
         <div>
             <AppNavbar/>
+            <button onClick={()=> setToggequestion(0)}>Toggle</button>
             <Card>
                 <CardHeader onClick={() => setToggequestion(1)}>
-                    <span className="font-weight-bold">List of Users</span>
+                    <span className="font-weight-bold">Users Crud</span>
                 </CardHeader>
                 <Collapse  isOpen={toggleQuestion === 1 ? true : false}>
                     <CardBody>
@@ -36,16 +38,89 @@ function Admin() {
 
             <Card>
                 <CardHeader onClick={() => setToggequestion(2)}>
-                    <span className="font-weight-bold">Something</span>
+                    <span className="font-weight-bold">Items Crud</span>
                 </CardHeader>
                 <Collapse  isOpen={toggleQuestion === 2 ? true : false}>
                     <CardBody>
                         <div className="users-create">
-                            <p>Something</p>
+                           <ItemsCrud/>
                         </div>
                     </CardBody>
                 </Collapse>
             </Card>
+            <Card>
+                <CardHeader onClick={() => setToggequestion(3)}>
+                    <span className="font-weight-bold">Categories Crud</span>
+                </CardHeader>
+                <Collapse  isOpen={toggleQuestion === 3 ? true : false}>
+                    <CardBody>
+                        <div className="users-create">
+                          Categories Crud
+                        </div>
+                    </CardBody>
+                </Collapse>
+            </Card>
+            <Card>
+                <CardHeader onClick={() => setToggequestion(4)}>
+                    <span className="font-weight-bold">Carts Crud</span>
+                </CardHeader>
+                <Collapse  isOpen={toggleQuestion === 4 ? true : false}>
+                    <CardBody>
+                        <div className="users-create">
+                          Carts Crud
+                        </div>
+                    </CardBody>
+                </Collapse>
+            </Card>
+            <Card>
+                <CardHeader onClick={() => setToggequestion(5)}>
+                    <span className="font-weight-bold">Providers Crud</span>
+                </CardHeader>
+                <Collapse  isOpen={toggleQuestion === 5 ? true : false}>
+                    <CardBody>
+                        <div className="users-create">
+                          Providers Crud
+                        </div>
+                    </CardBody>
+                </Collapse>
+            </Card>
+            <Card>
+                <CardHeader onClick={() => setToggequestion(6)}>
+                    <span className="font-weight-bold">Orders Crud</span>
+                </CardHeader>
+                <Collapse  isOpen={toggleQuestion === 6 ? true : false}>
+                    <CardBody>
+                        <div className="users-create">
+                          Orders Crud
+                        </div>
+                    </CardBody>
+                </Collapse>
+            </Card>
+            <Card>
+                <CardHeader onClick={() => setToggequestion(7)}>
+                    <span className="font-weight-bold">Bills Crud</span>
+                </CardHeader>
+                <Collapse  isOpen={toggleQuestion === 7 ? true : false}>
+                    <CardBody>
+                        <div className="users-create">
+                          Bills Crud
+                        </div>
+                    </CardBody>
+                </Collapse>
+            </Card>
+            <Card>
+                <CardHeader onClick={() => setToggequestion(8)}>
+                    <span className="font-weight-bold">Reviews Crud</span>
+                </CardHeader>
+                <Collapse  isOpen={toggleQuestion === 8 ? true : false}>
+                    <CardBody>
+                        <div className="users-create">
+                          Reviews Crud
+                        </div>
+                    </CardBody>
+                </Collapse>
+            </Card>
+
 
             
             
