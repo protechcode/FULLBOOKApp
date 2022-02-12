@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import UsersCrud from './usersCRUD/UsersCRUDComponent';
 import ItemsCrud from './itemsCRUD/ItemsCrudComponent';
+import ProvidersCrud from './providersCRUD/ProvidersCRUDComponent';
 
 import ListOfUsers from './usersCRUD/listOfUsers'
 import { List,Card,CardBody,CardTitle, CardSubtitle, CardText, Button, Accordion, AccordionBody, AccordionItem, AccordionHeader} from 'reactstrap'
@@ -49,6 +50,18 @@ function Admin() {
                 </Collapse>
             </Card>
             <Card>
+                <CardHeader onClick={() => setToggequestion(5)}>
+                    <span className="font-weight-bold">Providers Crud</span>
+                </CardHeader>
+                <Collapse  isOpen={toggleQuestion === 5 ? true : false}>
+                    <CardBody>
+                        <div className="users-create">
+                          <ProvidersCrud/>
+                        </div>
+                    </CardBody>
+                </Collapse>
+            </Card>
+            <Card>
                 <CardHeader onClick={() => setToggequestion(3)}>
                     <span className="font-weight-bold">Categories Crud</span>
                 </CardHeader>
@@ -68,18 +81,6 @@ function Admin() {
                     <CardBody>
                         <div className="users-create">
                           Carts Crud
-                        </div>
-                    </CardBody>
-                </Collapse>
-            </Card>
-            <Card>
-                <CardHeader onClick={() => setToggequestion(5)}>
-                    <span className="font-weight-bold">Providers Crud</span>
-                </CardHeader>
-                <Collapse  isOpen={toggleQuestion === 5 ? true : false}>
-                    <CardBody>
-                        <div className="users-create">
-                          Providers Crud
                         </div>
                     </CardBody>
                 </Collapse>

@@ -84,6 +84,9 @@ function UpdateItem(props) {
             image_3: image_3,
             provider_id: provider_id
         }
+        if(item){
+            update_item(item);
+        }else {throw new Error}
         //update_user(id, user);
         console.log("onSubmit: ", item);
     }

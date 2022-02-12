@@ -11,6 +11,7 @@ import AddUser from './admin/usersCRUD/addUser';
 import ItemList from './admin/itemsCRUD/ItemListComponent';
 import ItemsCrud from './admin/itemsCRUD/ItemsCrudComponent';
 import UpdateItem from './admin/itemsCRUD/UpdateItemComponent';
+import UpdateProvider from './admin/providersCRUD/ProviderUpdate';
 class Main extends Component {
     render(){
         return (
@@ -39,6 +40,9 @@ class Main extends Component {
                     </Route> 
                     <Route path='/upditem/:id'>
                         <UpdateItem/>
+                    </Route> 
+                    <Route path='/updprov/:id'>
+                        <UpdateProvider/>
                     </Route> 
                     <Route path='/itemscrud'>
                         <ItemsCrud/>
