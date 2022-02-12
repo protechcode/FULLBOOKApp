@@ -45,6 +45,7 @@ export default function  (state=initialState, action){
         case LOGOUT_SUCCESS:
         case REGISTER_FAIL:
             localStorage.removeItem('token');
+            localStorage.removeItem('is_admin');
             return{
                 ...state,
                 token: null,

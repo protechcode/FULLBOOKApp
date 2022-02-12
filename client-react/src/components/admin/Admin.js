@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import UsersCrud from './usersCRUD/UsersCRUDComponent';
 import ItemsCrud from './itemsCRUD/ItemsCrudComponent';
 import ProvidersCrud from './providersCRUD/ProvidersCRUDComponent';
+import Microservices from './microservices';
 
 import ListOfUsers from './usersCRUD/listOfUsers'
 import { List,Card,CardBody,CardTitle, CardSubtitle, CardText, Button, Accordion, AccordionBody, AccordionItem, AccordionHeader} from 'reactstrap'
@@ -18,7 +19,7 @@ const BASE_URL = "http://localhost:4000/api"
 
 function Admin() {
     
-    const [toggleQuestion, setToggequestion] = useState(0);//1 is the default id to be opened by default
+    const [toggleQuestion, setToggequestion] = useState(3);//1 is the default id to be opened by default
     
     if(localStorage.getItem('is_admin') === 'true'){
       
@@ -63,64 +64,17 @@ function Admin() {
                 </Card>
                 <Card>
                     <CardHeader onClick={() => setToggequestion(3)}>
-                        <span className="font-weight-bold">Categories Crud</span>
+                        <span className="font-weight-bold">Microservices</span>
                     </CardHeader>
                     <Collapse  isOpen={toggleQuestion === 3 ? true : false}>
                         <CardBody>
                             <div className="users-create">
-                              Categories Crud
+                              <Microservices/>
                             </div>
                         </CardBody>
                     </Collapse>
                 </Card>
-                <Card>
-                    <CardHeader onClick={() => setToggequestion(4)}>
-                        <span className="font-weight-bold">Carts Crud</span>
-                    </CardHeader>
-                    <Collapse  isOpen={toggleQuestion === 4 ? true : false}>
-                        <CardBody>
-                            <div className="users-create">
-                              Carts Crud
-                            </div>
-                        </CardBody>
-                    </Collapse>
-                </Card>
-                <Card>
-                    <CardHeader onClick={() => setToggequestion(6)}>
-                        <span className="font-weight-bold">Orders Crud</span>
-                    </CardHeader>
-                    <Collapse  isOpen={toggleQuestion === 6 ? true : false}>
-                        <CardBody>
-                            <div className="users-create">
-                              Orders Crud
-                            </div>
-                        </CardBody>
-                    </Collapse>
-                </Card>
-                <Card>
-                    <CardHeader onClick={() => setToggequestion(7)}>
-                        <span className="font-weight-bold">Bills Crud</span>
-                    </CardHeader>
-                    <Collapse  isOpen={toggleQuestion === 7 ? true : false}>
-                        <CardBody>
-                            <div className="users-create">
-                              Bills Crud
-                            </div>
-                        </CardBody>
-                    </Collapse>
-                </Card>
-                <Card>
-                    <CardHeader onClick={() => setToggequestion(8)}>
-                        <span className="font-weight-bold">Reviews Crud</span>
-                    </CardHeader>
-                    <Collapse  isOpen={toggleQuestion === 8 ? true : false}>
-                        <CardBody>
-                            <div className="users-create">
-                              Reviews Crud
-                            </div>
-                        </CardBody>
-                    </Collapse>
-                </Card>
+               
     
     
                 
@@ -130,7 +84,12 @@ function Admin() {
                 </div>
         );
     } else {
-        return (<h1>Admin Only!</h1>);
+        return (
+            <div>
+
+                <h1 style={{color:"red"}}>ERROR 403: Unauthorized, sorry Admin Only!</h1>
+            </div>
+        );
     }
     
     

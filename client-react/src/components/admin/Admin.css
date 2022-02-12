@@ -3,3 +3,33 @@
     margin:10px;
     padding:20px;
 }
+
+#micro-services{
+
+    background-color:white;
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+    gap: 3.9%;
+}
+
+#micro-services h1{
+    grid-row: 1;
+    grid-column: 2/4;
+}
+#square{
+    grid-row: 2;
+    height: 140px;
+    width: 140px;
+    background: black;
+    border: 20px rgb(36, 233, 233) double;
+    align-content: center;
+    justify-content: center;
+
+    
+}
+#square p {
+    grid-column:3;
+    padding: 10px;
+    color: orange;
+}

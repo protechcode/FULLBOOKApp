@@ -66,7 +66,7 @@ class Home extends Component {
                     <span className="fa fa-star"></span>
                     <div className="flex items-center justify-between  ">
                       <div>
-                        <p className="mt-1">{item.price}€</p>
+                        <p className="mt-1">{item.sell_price}€</p>
 
                       </div>
                       {this.props.isAuthenticated ? 
@@ -83,7 +83,7 @@ class Home extends Component {
               ))}
             </div>
           </div>
-          <Featured />
+         
           <BestService />
 
         </Container>
