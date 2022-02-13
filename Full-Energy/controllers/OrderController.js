@@ -15,6 +15,13 @@ module.exports.get_orders = async (req,res) =>
     /* const userId = req.params.id;
     Order.find({userId : userId}).sort({date:-1}).then(orders => res.json(orders)); */
 }
+module.exports.get_order = async (req,res) =>
+{
+    Order.findById(req.params.id).then(order => res.json({order: order}));
+
+    /* const userId = req.params.id;
+    Order.find({userId : userId}).sort({date:-1}).then(orders => res.json(orders)); */
+}
 module.exports.create_order = async (req, res) =>{
     const userId = req.body.user_id;
     const userAddr1 = req.body.address_1;

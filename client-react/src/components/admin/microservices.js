@@ -6,6 +6,8 @@ function Microservices() {
     const [usersLength, setUserLength] = useState();
     const [itemsLength, setItemLength] = useState();
     const [cartsLength, setCartLength] = useState();
+    const [ordersLength, setOrderLength] = useState();
+    const [ordersTotal, setOrderTotal] = useState();
     async function get_users(){
         await axios.get("http://localhost:4000/api/users")
         .then(res=>{
@@ -33,11 +35,29 @@ function Microservices() {
             setCartLength(len)
         })
     }
+    async function get_orders(){
+        await axios.get('http://localhost:4000/api/order')
+            .then(res=>{
+                const data = res.data;
+                const len = data.orders.length;
+                setOrderLength(len)
+                const orders = data.orders;
+                for (var i = 0; i< orders.length; i ++){
+                    var order = orders[i];
+                                       
+                }
+                console.log("ORDERSSSSSS:>>>>>",order.total )
+                const total = order.total.toFixed(2).replace(/[.,]00$/, "");
+                setOrderTotal(total);
+               
+                 
+            })
+    }
 
   return(
       <div id="micro-services">
-          <button onClick={()=>{get_users(); get_items();get_carts()}}>Get Stats </button>
-          <h1>Microservices</h1>
+          <button onClick={()=>{get_users(); get_items();get_carts(); get_orders()}}>Get Stats </button>
+          <h1>Web Statistics</h1>
           <div id="square">
             <p>Users in db: {usersLength}</p>
           </div>
@@ -46,6 +66,12 @@ function Microservices() {
           </div>
           <div id="square">
             <p>Carts in db: {cartsLength}</p>
+          </div>
+          <div id="square">
+            <p>Orders in db: {ordersLength}</p>
+          </div>
+          <div id="square2">
+            <p>Total ammount of Orders in db: {ordersTotal}€    </p>
           </div>
 
       </div>

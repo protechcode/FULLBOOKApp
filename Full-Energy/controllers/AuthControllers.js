@@ -2,7 +2,7 @@ const User = require('../models/User_model');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const bcrypt = require('bcrypt');
-const { model } = require('mongoose');
+
 
 module.exports.hello = (req,res) => {
 
