@@ -1,3 +1,10 @@
+#orderTable th{
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #06e2ff;
+    color: white;
+    width: 1%;
+}
 th{
     padding-bottom: 12px;
     text-align: left;

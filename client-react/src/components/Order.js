@@ -1,83 +1,72 @@
-import { Component, Fragment } from 'react';
+import React, { useState } from 'react'
+import axios from 'axios';
 import AppNavbar from './AppNavbar';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { getOrders } from '../actions/orderActions';
-import {Card, CardText, CardBody, CardTitle, CardSubtitle, Button, Alert, Container} from 'reactstrap';
+import { withRouter, Redirect, Link } from 'react-router-dom';
+import './admin/itemsCRUD/Items.css'
 
-class Orders extends Component {
+const BASE_URL = "http://localhost:4000/api"
+const token = localStorage.getItem('token');
 
-    state = {
-        loaded: false,
-    }
+function Orders(props) {
+    const id = props.match.params.id;
+    const [ordersArray, setOrdersArray] = useState([]);
+    const [itemsArray, setItemsArray] = useState([]);
 
-    static propTypes = {
-        isAuthenticated: PropTypes.bool,
-        user: PropTypes.object.isRequired,
-        order: PropTypes.object.isRequired,
-        getOrders: PropTypes.func.isRequired
-    }
+    async function get_user_orders() {
 
-    ongetOrders = async (id) => {
-        await this.props.getOrders(id);
-        this.state.loaded = true;
-    }
+        await axios.get(BASE_URL + `/order/${id}`)
+            .then(res => {
 
-    render(){
-        const user = this.props.user;
-        if(this.props.isAuthenticated && !this.props.order.loading && !this.state.loaded){
-            this.ongetOrders(user._id);
+                const orders = res.data.order;
+                setOrdersArray(orders);
+
+                console.log(orders)
+            })
+        for (var i = 0; i < ordersArray.length; i++) {
+            var ordItems = ordersArray[i].items
+            itemsArray.push(ordItems)
+
         }
-        return(
+
+    }
+    if (token) {
+        return (
             <div>
                 <AppNavbar/>
-                {this.props.isAuthenticated ?
-                    <Fragment>
-                        {this.props.order.orders!==[] ? null :
-                            <Alert color="info" className="text-center">You have no orders!</Alert>
-                        }
-                    </Fragment>
-                    : <Alert color="danger" className="text-center">Login to View!</Alert>
-                }
+                <button onClick={get_user_orders}>Get orders</button>
+                <div>
+                    <tr id="orderTable">
+                        <th>Order Number</th>
+                        <th>Card</th>
+                        <th>Date</th>
+                        <th>Payment Method</th>
+                        <th>Total</th>
+                    </tr>
 
-                {this.props.isAuthenticated && !this.props.order.loading && this.state.loaded && this.props.order.orders.length?
-                    <Container>
-                        <div className="row">
-                            {this.props.order.orders.map((order)=>(
-                                <div className="col-md-12">
-                                    <Card>
-                                        <CardBody>
-                                            <CardTitle tag="h4">{order.items.length} items - Total cost:  {order.bill}</CardTitle>
-                                            <div className="row">
-                                            {order.items.map((item)=>(
-                                                <div className="col-md-4">
-                                                    <Card className="mb-2">
-                                                        <CardBody>
-                                                            <CardTitle tag="h5">{item.title} ({item.quantity} pieces)</CardTitle>
-                                                            <CardSubtitle tag="h6">{item.price} /piece</CardSubtitle>
-                                                        </CardBody>
-                                                    </Card>
-                                                </div>
-                                            ))}
-                                            </div>
-                                        </CardBody>
-                                    </Card>
-                                    <br/>
-                                </div>
+                    {ordersArray.map(({ _id, card_company, created_date, items, payment_method, total }, index) => {
+                        return (
+                            <tr key={index}>
                                 
-                            ))}
-                        </div>
-                    </Container>
-                :null}
+                                <td>{_id}</td>
+                                <td>{card_company}</td>
+                                <td>{created_date}</td>
+                                <td>{payment_method}</td>
+                                <td>{total}</td>
+
+                            </tr>
+
+                        )
+                    })}
+
+                </div>
             </div>
+
+        )
+    } else {
+        return (
+            <h1>Must be Logged in</h1>
         )
     }
+
 }
-
-const mapStateToProps = (state) => ({
-    order: state.order,
-    isAuthenticated: state.auth.isAuthenticated,
-    user: state.auth.user,
-})
-
-export default connect(mapStateToProps, {getOrders})(Orders);
+export default withRouter(Orders);

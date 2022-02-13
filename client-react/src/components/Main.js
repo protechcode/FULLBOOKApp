@@ -27,7 +27,7 @@ class Main extends Component {
                     <Route path='/profile'>
                         <Profile/>
                     </Route>  
-                    <Route path='/orders'>
+                    <Route path='/orders/:id'>
                         <Orders/>
                     </Route>
                     <Route path='/admin'>

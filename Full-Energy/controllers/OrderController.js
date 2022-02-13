@@ -17,7 +17,7 @@ module.exports.get_orders = async (req,res) =>
 }
 module.exports.get_order = async (req,res) =>
 {
-    Order.findById(req.params.id).then(order => res.json({order: order}));
+    Order.find({user_id: req.params.id}).then(order => res.json({order: order}));
 
     /* const userId = req.params.id;
     Order.find({userId : userId}).sort({date:-1}).then(orders => res.json(orders)); */
@@ -51,11 +51,11 @@ module.exports.create_order = async (req, res) =>{
 
     })
     order.save()
-    const cartUpdated = await Cart.findByIdAndUpdate({_id: cartId},{purchased: true}).then(cartUpdated=>cartUpdated).catch(e=>console.log(e))
+    const cartdelete = await Cart.findByIdAndDelete({_id: cartId}).catch(e=>console.log(e))
     return res.status(201).json({
         message: order._id +"The payment will be processed, and an email from your bank will confirm the purchase",
         order: order,
-        purchased: cartUpdated.purchased,
+       
         user: confirmationOfUserUpdate
     })
 
