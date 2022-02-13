@@ -44,10 +44,11 @@ function Microservices() {
                 const orders = data.orders;
                 for (var i = 0; i< orders.length; i ++){
                     var order = orders[i];
+                    var subtotal = orders[i].total * i
                                        
                 }
-                console.log("ORDERSSSSSS:>>>>>",order.total )
-                const total = order.total.toFixed(2).replace(/[.,]00$/, "");
+                console.log("ORDERSSSSSS:>>>>>", subtotal/* order.total * orders.length */ )
+                const total = subtotal.toFixed(2).replace(/[.,]00$/, "");
                 setOrderTotal(total);
                
                  

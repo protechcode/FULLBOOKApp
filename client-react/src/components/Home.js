@@ -13,6 +13,7 @@ import Featured from './Featured';
 import swal from 'sweetalert';
 
 
+
 class Home extends Component {
 
   componentDidMount() {
@@ -42,6 +43,7 @@ class Home extends Component {
 
     return (
       <div>
+     
         <AppNavbar />
 
         <Container>

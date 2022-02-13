@@ -53,7 +53,7 @@ module.exports.create_order = async (req, res) =>{
     order.save()
     const cartUpdated = await Cart.findByIdAndUpdate({_id: cartId},{purchased: true}).then(cartUpdated=>cartUpdated).catch(e=>console.log(e))
     return res.status(201).json({
-        message: order._id +" New Order Created, the payment will be processed, and an email from your bank will confirm the purchase",
+        message: order._id +"The payment will be processed, and an email from your bank will confirm the purchase",
         order: order,
         purchased: cartUpdated.purchased,
         user: confirmationOfUserUpdate

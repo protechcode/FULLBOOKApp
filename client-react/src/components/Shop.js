@@ -13,7 +13,7 @@ class Home extends Component {
   componentDidMount() {
     this.props.getItems();
   }
- 
+
 
   static propTypes = {
     getItems: PropTypes.func.isRequired,
@@ -31,14 +31,14 @@ class Home extends Component {
     });
   }
   filterItems = (items, query) => {
-      if (!query) {
-          return items;
-      }
-  
-      return items.filter((item) => {
-         
-       // const itemName = item.title.toLowerCase();
-        return (item.title.toLowerCase().includes(query) ||item.category_name.toLowerCase().includes(query) );
+    if (!query) {
+      return items;
+    }
+
+    return items.filter((item) => {
+
+      // const itemName = item.title.toLowerCase();
+      return (item.title.toLowerCase().includes(query) || item.category_name.toLowerCase().includes(query));
     });
   };
 
@@ -50,7 +50,7 @@ class Home extends Component {
 
     const filteredItems = this.filterItems(items, query);
     console.log(filteredItems);
-    
+
     const user = this.props.user;
     return (
       <div>
@@ -58,40 +58,47 @@ class Home extends Component {
         <Container>
 
           <div className="container px-5 py-24 mx-auto">
-            <div className="flex flex-wrap -m-4">
-              {
-              filteredItems.map((item) => (
-                <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-                  <a className="block relative h-48 rounded overflow-hidden">
-                    <img className="w-full h-full lg:max-w-2xl" src={item.image_1} alt="Catalogue-pana.svg" />
-                  </a>
-                  <div className="mt-4 items-center">
-                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-2">{item.category_name}</h3>
-                    <ItemModal item={item} key={item._id} />
-                    
-                    <span className="fa fa-star checked mb-6"></span>
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star"></span>
-                    <span className="fa fa-star"></span>
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="mt-1">{item.sell_price}€</p>
+          <div className="flex flex-wrap -m-4">
+        {
+          filteredItems.map((item) => (
+          <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <div
+          id="carouselExampleCrossfade"
+          class ="carousel slide carousel-fade relative"
+          data-bs-ride="carousel"
+          >
+            
+          <a className="block relative h-48 rounded overflow-hidden">
+          <img className="w-full h-full lg:max-w-2xl" src={item.image_1} alt="Catalogue-pana.svg" />
+          </a>
+          </div>
+          <div className="mt-4 items-center">
+          <h3 className="text-gray-500 text-xs tracking-widest title-font mb-2">{item.category_name}</h3>
+          <ItemModal item={item} key={item._id} />
 
-                      </div>
-                      {this.props.isAuthenticated ?
-                        <Button
-                          color="success"
-                          size="sm"
-                          onClick={this.onAddToCart.bind(this, user._id, item._id)}
-                        >Add To Cart</Button> :
-                        null}
-                    </div>
+          <span className="fa fa-star checked mb-6"></span>
+          <span className="fa fa-star checked"></span>
+          <span className="fa fa-star checked"></span>
+          <span className="fa fa-star"></span>
+          <span className="fa fa-star"></span>
+          <div className="flex items-center justify-between">
+          <div>
+          <p className="mt-1">{item.sell_price}€</p>
 
-                  </div>
-                </div>
-              ))}
-            </div>
+          </div>
+        {this.props.isAuthenticated?
+          <Button
+          color="success"
+          size="sm"
+          onClick={this.onAddToCart.bind(this, user._id, item._id)}
+          >Add To Cart</Button>:
+          null}
+          </div>
+
+          </div>
+          </div>
+        ))}
+          </div>
           </div>
 
         </Container>

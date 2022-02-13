@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { getCart, deleteFromCart,updateCart } from '../actions/cartActions';
 import Checkout from './Checkout';
 import { checkout } from '../actions/orderActions';
+import OrderNew from './ORDER2';
 
 
 class CartModal extends Component {
@@ -150,11 +151,14 @@ class CartModal extends Component {
                                                 </div>
                                                 <div class="col-md-12">
                         
-                                                   <Checkout
+                                                  {/*  <Checkout
                                                        user={user._id}
                                                        amount={this.props.cart.cart.bill}
                                                        checkout={this.props.checkout}
-                                                   />                   
+                                                   />      */}      
+                                                   <OrderNew
+                                                   user={user}
+                                                   cart={this.props.cart}/>        
                                               </div>
                                             </div>
                                         </CardBody>
