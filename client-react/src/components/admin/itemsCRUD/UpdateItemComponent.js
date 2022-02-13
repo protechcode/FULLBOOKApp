@@ -100,61 +100,61 @@ function UpdateItem(props) {
                     <FormGroup row>
                         <Label for="Title" sm={1} >Title</Label>
                         <Col sm={6}>
-                            <Input value={itemInfo.title} id="title" name="title" placeholder="exampleTitle" type="text" />
+                            <Input value={itemInfo.title} required id="title" name="title" placeholder="exampleTitle" type="text" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="description" sm={1} >description</Label>
                         <Col sm={6}>
-                            <Input value={itemInfo.description} id="description" name="description" placeholder="exampleDescription" type="text" />
+                            <Input value={itemInfo.description} required id="description" name="description" placeholder="exampleDescription" type="text" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="category_id" sm={1} >category_id</Label>
                         <Col sm={6}>
-                            <Input value={itemInfo.category_id} id="category_id" name="category_id" type="text" />
+                            <Input value={itemInfo.category_id} required id="category_id" name="category_id" type="text" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="catName" sm={1} >catName</Label>
                         <Col sm={6}>
-                            <Input value={itemInfo.catName} id="catName" name="catName" placeholder="******" type="text" />
+                            <Input value={itemInfo.catName} required id="catName" name="catName" placeholder="******" type="text" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="price" sm={1} >price</Label>
                         <Col sm={6}>
-                            <Input value={itemInfo.price} id="price" name="price" placeholder="555" type="text" />
+                            <Input value={itemInfo.price} required id="price" name="price" placeholder="555" type="text" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="sell_price" sm={1} >sell_price</Label>
                         <Col sm={6}>
-                            <Input value={itemInfo.sell_price} id="sell_price" name="sell_price" placeholder="Street, #, Locality, City, Postal Code" type="text" />
+                            <Input value={itemInfo.sell_price} required id="sell_price" name="sell_price" placeholder="Street, #, Locality, City, Postal Code" type="text" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="image_1" sm={1} >image_1</Label>
                         <Col sm={6}>
-                            <Input value={itemInfo.image_1} id="image_1" name="image_1" placeholder="Continuation Street, #, Locality, City, Postal Code" type="text" />
+                            <Input value={itemInfo.image_1} required id="image_1" name="image_1" placeholder="Continuation Street, #, Locality, City, Postal Code" type="text" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="image_2" sm={1} >image_2</Label>
                         <Col sm={6}>
-                            <Input value={itemInfo.image_2} id="image_2" name="image_2" placeholder="false" type="text" />
+                            <Input value={itemInfo.image_2} required id="image_2" name="image_2" placeholder="false" type="text" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="image_3" sm={1} >image_3</Label>
                         <Col sm={6}>
-                            <Input value={itemInfo.image_3} id="image_3" name="image_3" placeholder="http://www.someurlwherephotois.com" type="text" />
+                            <Input value={itemInfo.image_3} required id="image_3" name="image_3" placeholder="http://www.someurlwherephotois.com" type="text" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="provider_id" sm={1} >provider_id</Label>
                         <Col sm={6}>
-                            <Input value={itemInfo.provider_id} id="provider_id" name="provider_id" placeholder="http://www.someurlwherephotois.com" type="text" />
+                            <Input value={itemInfo.provider_id} required id="provider_id" name="provider_id" placeholder="http://www.someurlwherephotois.com" type="text" />
                         </Col>
                     </FormGroup>
 

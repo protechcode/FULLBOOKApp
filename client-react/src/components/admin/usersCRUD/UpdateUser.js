@@ -76,55 +76,55 @@ function UpdateUser(props) {
                     <FormGroup row>
                         <Label for="Name" sm={1} >Name</Label>
                         <Col sm={6}>
-                            <Input value={userInfo.name} id="Name" name="name" placeholder="exampleName" type="text" />
+                            <Input value={userInfo.name} id="Name" required name="name" placeholder="exampleName" type="text" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="Surname" sm={1} >Surname</Label>
                         <Col sm={6}>
-                            <Input value={userInfo.surname} id="Surname" name="surname" placeholder="exampleSurname" type="text" />
+                            <Input value={userInfo.surname} id="Surname" required name="surname" placeholder="exampleSurname" type="text" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="Email" sm={1} >Email</Label>
                         <Col sm={6}>
-                            <Input value={userInfo.email} id="Email" name="email" placeholder="example@example.com" type="email" />
+                            <Input value={userInfo.email} id="Email" required name="email" placeholder="example@example.com" type="email" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="Password" sm={1} >Password</Label>
                         <Col sm={6}>
-                            <Input value={userInfo.password} id="Password" name="password" placeholder="******" type="password" />
+                            <Input value={userInfo.password} id="Password" required name="password" placeholder="******" type="password" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="Phone" sm={1} >Phone</Label>
                         <Col sm={6}>
-                            <Input value={userInfo.phone} id="Phone" name="phone" placeholder="555-555-555" type="text" />
+                            <Input value={userInfo.phone} id="Phone" required name="phone" placeholder="555-555-555" type="text" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="Address_1" sm={1} >Address_1</Label>
                         <Col sm={6}>
-                            <Input value={userInfo.address_1} id="Address_1" name="address_1" placeholder="Street, #, Locality, City, Postal Code" type="text" />
+                            <Input value={userInfo.address_1} id="Address_1" required name="address_1" placeholder="Street, #, Locality, City, Postal Code" type="text" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="Address_2" sm={1} >Address_2</Label>
                         <Col sm={6}>
-                            <Input value={userInfo.address_2} id="Address_2" name="address_2" placeholder="Continuation Street, #, Locality, City, Postal Code" type="text" />
+                            <Input value={userInfo.address_2} id="Address_2" required name="address_2" placeholder="Continuation Street, #, Locality, City, Postal Code" type="text" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="is_admin" sm={1} >is_admin</Label>
                         <Col sm={6}>
-                            <Input value={userInfo.is_admin} id="is_admin" name="is_admin" placeholder="false" type="text" />
+                            <Input value={userInfo.is_admin} id="is_admin" required name="is_admin" placeholder="false" type="text" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="image_url" sm={1} >image_url</Label>
                         <Col sm={6}>
-                            <Input value={userInfo.image_url} id="image_url" name="image_url" placeholder="http://www.someurlwherephotois.com" type="text" />
+                            <Input value={userInfo.image_url} id="image_url" required name="image_url" placeholder="http://www.someurlwherephotois.com" type="text" />
                         </Col>
                     </FormGroup>
 

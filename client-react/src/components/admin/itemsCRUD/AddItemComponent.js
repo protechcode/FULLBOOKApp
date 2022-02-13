@@ -88,9 +88,9 @@ function AddItem() {
             <button onClick={get_providers}>get providers</button>
             <Form onSubmit={onSubmit}>
                 <Label for="title">Title</Label>
-                <Input type="text" name="title" />
+                <Input type="text" required name="title" />
                 <Label for="description">Description</Label>
-                <Input type="text" name="description" />
+                <Input type="text" required name="description" />
 
                 {/* 0000000000000000000000000000000000000000 */}
                 <div>
@@ -117,22 +117,22 @@ function AddItem() {
                             )
                         })}
                 <Label id="cat" for="categories_id">Categories (Copy and paste one of the id of the list)</Label>
-                <Input type="text" name="categories_id" />
+                <Input type="text" required name="categories_id" />
                
 
                 {/* 0000000000000000000000000000000000000000 */}
                 <Label for="first_stock">First Stock</Label>
-                <Input type="text" name="first_stock" />
+                <Input type="text" required name="first_stock" />
                 <Label for="image_1">image_1</Label>
-                <Input type="text" name="image_1" />
+                <Input type="text" required name="image_1" />
                 <Label for="image_2">image_2</Label>
-                <Input type="text" name="image_2" />
+                <Input type="text" required name="image_2" />
                 <Label for="image_3">image_3</Label>
-                <Input type="text" name="image_3" />
+                <Input type="text" required name="image_3" />
                 <Label for="price">price</Label>
-                <Input type="text" name="price" />
+                <Input type="text" required name="price" />
                 <Label for="sell_price">sell_price</Label>
-                <Input type="text" name="sell_price" />
+                <Input type="text" required name="sell_price" />
                 {/* 0000000000000000000000000000000000000000 */}
                 <div>
                     <Label id="prov" for="providers">providers</Label>
@@ -150,7 +150,7 @@ function AddItem() {
 
                 {/* 0000000000000000000000000000000000000000 */}
                 <Label for="quantity">quantity</Label>
-                <Input type="text" name="quantity" />
+                <Input type="text" required name="quantity" />
                 <button onClick={() => console.log("Clicccccked")}>New Item</button>
 
             </Form>

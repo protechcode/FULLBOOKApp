@@ -82,49 +82,49 @@ function UpdateProvider(props) {
                     <FormGroup row>
                         <Label for="name_1" sm={1} >name_1</Label>
                         <Col sm={6}>
-                            <Input value={providerInfo.name_1} id="name_1" name="name_1" placeholder="examplename_1" type="text" />
+                            <Input value={providerInfo.name_1 } required id="name_1" name="name_1" placeholder="examplename_1" type="text" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="name_2" sm={1} >name_2</Label>
                         <Col sm={6}>
-                            <Input value={providerInfo.name_2} id="name_2" name="name_2" placeholder="examplename_2" type="text" />
+                            <Input value={providerInfo.name_2} required id="name_2" name="name_2" placeholder="examplename_2" type="text" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="fiscal_id" sm={1} >fiscal_id</Label>
                         <Col sm={6}>
-                            <Input value={providerInfo.fiscal_id} id="fiscal_id" name="fiscal_id" type="text" />
+                            <Input value={providerInfo.fiscal_id} required id="fiscal_id" name="fiscal_id" type="text" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="email" sm={1} >email</Label>
                         <Col sm={6}>
-                            <Input value={providerInfo.email} id="email" name="email" placeholder="******" type="email" />
+                            <Input value={providerInfo.email} required id="email" name="email" placeholder="******" type="email" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="phone" sm={1} >phone</Label>
                         <Col sm={6}>
-                            <Input value={providerInfo.phone} id="phone" name="phone" placeholder="555-555-555" type="text" />
+                            <Input value={providerInfo.phone} required id="phone" name="phone" placeholder="555-555-555" type="text" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="city" sm={1} >city</Label>
                         <Col sm={6}>
-                            <Input value={providerInfo.city} id="city" name="city" placeholder="Street, #, Locality, City, Postal Code" type="text" />
+                            <Input value={providerInfo.city} required id="city" name="city" placeholder="Street, #, Locality, City, Postal Code" type="text" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="country" sm={1} >country</Label>
                         <Col sm={6}>
-                            <Input value={providerInfo.country} id="country" name="country" placeholder="Continuation Street, #, Locality, City, Postal Code" type="text" />
+                            <Input value={providerInfo.country} required id="country" name="country" placeholder="Continuation Street, #, Locality, City, Postal Code" type="text" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="postal_code" sm={1} >postal_code</Label>
                         <Col sm={6}>
-                            <Input value={providerInfo.postal_code} id="postal_code" name="postal_code" placeholder="false" type="text" />
+                            <Input value={providerInfo.postal_code} required id="postal_code" name="postal_code" placeholder="false" type="text" />
                         </Col>
                     </FormGroup>
 
