@@ -17,7 +17,7 @@ export const CHECKOUT = 'CHECKOUT';
 
 export const USER_LOADING = 'USER_LOADING';
 export const USER_LOADED = 'USER_LOADED';
-
+export const UPDATE_USER ='UPDATE_USER';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
@@ -29,5 +29,3 @@ export const REGISTER_FAIL = 'REGISTER_FAIL';
 
 export const GET_ERRORS = 'GET_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
-
-export const ADMIN_IS_TRUE = 'ADMIN_IS_TRUE';

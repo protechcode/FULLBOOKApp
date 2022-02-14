@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { returnErrors } from './errorActions';
-import { USER_LOADING, USER_LOADED, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT_SUCCESS, REGISTER_SUCCESS, REGISTER_FAIL} from './types';
+import { UPDATE_USER,USER_LOADING, USER_LOADED, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT_SUCCESS, REGISTER_SUCCESS, REGISTER_FAIL} from './types';
 
 export const loadUser = () => (dispatch, getState) => {
     // User loading
@@ -55,13 +55,10 @@ export const login = ({email, password}) => dispatch => {
     const body = JSON.stringify({email, password});
 
     axios.post('http://localhost:4000/api/login',body,config)
-        .then(res => {
-            dispatch({
+        .then(res => dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data
-            });
-            console.log(res.data.user)
-    })
+        }))
         .catch(err => {
             dispatch(returnErrors(err.response.data, err.response.status, 'LOGIN_FAIL'));
             dispatch({
@@ -69,6 +66,18 @@ export const login = ({email, password}) => dispatch => {
             });
         });
 }
+
+
+export const updateUser = (id, user) => (dispatch) => {
+    axios.put(`http://localhost:4000/api/users/${id}`, user)
+        .then(res => dispatch({
+            type: UPDATE_USER,
+            payload: res.data
+        }))
+        .catch(err => dispatch(returnErrors(err.response.data, err.response.status)))
+}
+
+
 // logout user
 export const logout = () => {
     return {
